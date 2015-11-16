@@ -31,6 +31,7 @@
             this.lblAboutTitle = new System.Windows.Forms.Label();
             this.lblVersion = new System.Windows.Forms.Label();
             this.lblAboutDetail = new System.Windows.Forms.Label();
+            this.btnClose = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblAboutTitle
@@ -58,13 +59,24 @@
             this.lblAboutDetail.Name = "lblAboutDetail";
             this.lblAboutDetail.Size = new System.Drawing.Size(258, 47);
             this.lblAboutDetail.TabIndex = 2;
-            this.lblAboutDetail.Text = "An application to monitor patient vitals and work shifts of medical staff";
+            this.lblAboutDetail.Text = "An application to monitor patient vitals and work shifts of medical staff.";
+            // 
+            // btnClose
+            // 
+            this.btnClose.Location = new System.Drawing.Point(196, 226);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(75, 23);
+            this.btnClose.TabIndex = 3;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // About
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.lblAboutDetail);
             this.Controls.Add(this.lblVersion);
             this.Controls.Add(this.lblAboutTitle);
@@ -80,5 +92,6 @@
         private System.Windows.Forms.Label lblAboutTitle;
         private System.Windows.Forms.Label lblVersion;
         private System.Windows.Forms.Label lblAboutDetail;
+        private System.Windows.Forms.Button btnClose;
     }
 }

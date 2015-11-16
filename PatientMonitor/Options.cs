@@ -21,5 +21,11 @@ namespace PatientMonitor
         {
             this.Close();
         }
+
+        private void btnAbout_Click(object sender, EventArgs e)
+        {
+            About m = new About();
+            m.Show();
+        }
     }
 }
