@@ -100,7 +100,10 @@ namespace PatientMonitor
             if (rate < limit)
             {
                 //PLACE ALARM
-                MessageBox.Show("Patient is BELOW limit");
+                AlarmBelow m = new AlarmBelow();
+                m.Show();
+
+                //MessageBox.Show("Patient is BELOW limit");
             }
         }
 
@@ -118,7 +121,10 @@ namespace PatientMonitor
             if (rate > limit)
             {
                 //PLACE ALARM
-                MessageBox.Show("Patient is ABOVE limit");
+                AlarmAbove m = new AlarmAbove();
+                m.Show();
+
+                //MessageBox.Show("Patient is ABOVE limit");
             }
         }
 
