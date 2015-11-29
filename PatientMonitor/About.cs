@@ -21,5 +21,10 @@ namespace PatientMonitor
         {
             this.Close();
         }
+
+        private void lblVersion_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
