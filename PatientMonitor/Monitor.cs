@@ -82,10 +82,6 @@ namespace PatientMonitor
             MaxRate(tbrSysPressureMax, bloodPressure);
 
             //call MinRate and MaxRate
-            MinRate(tbrDiaPressureMin, lblDiaPressure);
-            MaxRate(tbrDiaPressureMax, lblDiaPressure);
-
-            //call MinRate and MaxRate
             MinRate(tbrTempMin, temperature);
             MaxRate(tbrTempMax, temperature);
         }
@@ -104,10 +100,7 @@ namespace PatientMonitor
             if (rate < limit)
             {
                 //PLACE ALARM
-                AlarmBelow m = new AlarmBelow();
-                m.Show();
-
-                //MessageBox.Show("Patient is BELOW limit");
+                MessageBox.Show("Patient is BELOW limit");
             }
         }
 
@@ -125,10 +118,7 @@ namespace PatientMonitor
             if (rate > limit)
             {
                 //PLACE ALARM
-                AlarmAbove m = new AlarmAbove();
-                m.Show();
-
-                //MessageBox.Show("Patient is ABOVE limit");
+                MessageBox.Show("Patient is ABOVE limit");
             }
         }
 

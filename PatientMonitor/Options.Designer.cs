@@ -42,7 +42,7 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(225, 117);
+            this.btnClose.Location = new System.Drawing.Point(349, 305);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
             this.btnClose.TabIndex = 0;
@@ -52,7 +52,7 @@
             // 
             // btnAbout
             // 
-            this.btnAbout.Location = new System.Drawing.Point(12, 117);
+            this.btnAbout.Location = new System.Drawing.Point(12, 305);
             this.btnAbout.Name = "btnAbout";
             this.btnAbout.Size = new System.Drawing.Size(75, 23);
             this.btnAbout.TabIndex = 1;
@@ -68,7 +68,7 @@
             this.gbxModules.Controls.Add(this.cbxTemp);
             this.gbxModules.Location = new System.Drawing.Point(12, 12);
             this.gbxModules.Name = "gbxModules";
-            this.gbxModules.Size = new System.Drawing.Size(293, 99);
+            this.gbxModules.Size = new System.Drawing.Size(412, 91);
             this.gbxModules.TabIndex = 2;
             this.gbxModules.TabStop = false;
             this.gbxModules.Text = "Modules";
@@ -126,11 +126,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(312, 149);
+            this.ClientSize = new System.Drawing.Size(436, 340);
             this.Controls.Add(this.gbxModules);
             this.Controls.Add(this.btnAbout);
             this.Controls.Add(this.btnClose);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "Options";
             this.Text = "Options";
             this.gbxModules.ResumeLayout(false);

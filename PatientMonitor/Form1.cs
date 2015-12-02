@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace PatientMonitor
 {
-    public partial class Menu : Form
+    public partial class Form1 : Form
     {
-        public Menu()
+        public Form1()
         {
             InitializeComponent();
         }
