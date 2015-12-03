@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Monitor));
             this.btnSet = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -75,11 +76,11 @@
             this.tbrHRMax = new System.Windows.Forms.TrackBar();
             this.tbrBRMax = new System.Windows.Forms.TrackBar();
             this.gbxMonitor = new System.Windows.Forms.GroupBox();
+            this.lblDiaPressure = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.lblBed = new System.Windows.Forms.Label();
             this.tipThresholds = new System.Windows.Forms.ToolTip(this.components);
             this.btnOptions = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
-            this.lblDiaPressure = new System.Windows.Forms.Label();
             this.gbxThresholds.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -99,6 +100,7 @@
             // 
             // btnSet
             // 
+            this.btnSet.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSet.Location = new System.Drawing.Point(378, 186);
             this.btnSet.Name = "btnSet";
             this.btnSet.Size = new System.Drawing.Size(75, 23);
@@ -131,7 +133,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(9, 116);
+            this.label3.Location = new System.Drawing.Point(54, 116);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(143, 19);
             this.label3.TabIndex = 1;
@@ -141,11 +143,11 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(171, 38);
+            this.label4.Location = new System.Drawing.Point(149, 38);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(105, 19);
+            this.label4.Size = new System.Drawing.Size(137, 19);
             this.label4.TabIndex = 1;
-            this.label4.Text = "Temperature";
+            this.label4.Text = "Temperature (°C)";
             // 
             // heartRate
             // 
@@ -171,7 +173,7 @@
             // 
             this.bloodPressure.AutoSize = true;
             this.bloodPressure.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bloodPressure.Location = new System.Drawing.Point(53, 153);
+            this.bloodPressure.Location = new System.Drawing.Point(98, 153);
             this.bloodPressure.Name = "bloodPressure";
             this.bloodPressure.Size = new System.Drawing.Size(35, 18);
             this.bloodPressure.TabIndex = 1;
@@ -208,6 +210,7 @@
             // 
             // Btn_close
             // 
+            this.Btn_close.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Btn_close.Location = new System.Drawing.Point(388, 472);
             this.Btn_close.Name = "Btn_close";
             this.Btn_close.Size = new System.Drawing.Size(75, 23);
@@ -340,7 +343,7 @@
             this.lblHeart.Name = "lblHeart";
             this.lblHeart.Size = new System.Drawing.Size(59, 13);
             this.lblHeart.TabIndex = 10;
-            this.lblHeart.Text = "Heart Rate";
+            this.lblHeart.Text = "Pulse Rate";
             // 
             // lblTemp
             // 
@@ -560,7 +563,7 @@
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(59, 13);
             this.label17.TabIndex = 25;
-            this.label17.Text = "Heart Rate";
+            this.label17.Text = "Pulse Rate";
             // 
             // label18
             // 
@@ -614,6 +617,26 @@
             this.gbxMonitor.TabStop = false;
             this.gbxMonitor.Text = "Current Patient Vitals";
             // 
+            // lblDiaPressure
+            // 
+            this.lblDiaPressure.AutoSize = true;
+            this.lblDiaPressure.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDiaPressure.Location = new System.Drawing.Point(286, 153);
+            this.lblDiaPressure.Name = "lblDiaPressure";
+            this.lblDiaPressure.Size = new System.Drawing.Size(35, 18);
+            this.lblDiaPressure.TabIndex = 3;
+            this.lblDiaPressure.Text = "100";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(243, 116);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(148, 19);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "Diastolic Pressure";
+            // 
             // lblBed
             // 
             this.lblBed.AutoSize = true;
@@ -625,6 +648,7 @@
             // 
             // btnOptions
             // 
+            this.btnOptions.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnOptions.Location = new System.Drawing.Point(10, 472);
             this.btnOptions.Name = "btnOptions";
             this.btnOptions.Size = new System.Drawing.Size(75, 23);
@@ -632,26 +656,6 @@
             this.btnOptions.Text = "Options";
             this.btnOptions.UseVisualStyleBackColor = true;
             this.btnOptions.Click += new System.EventHandler(this.btnOptions_Click);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(161, 116);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(148, 19);
-            this.label5.TabIndex = 2;
-            this.label5.Text = "Diastolic Pressure";
-            // 
-            // lblDiaPressure
-            // 
-            this.lblDiaPressure.AutoSize = true;
-            this.lblDiaPressure.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDiaPressure.Location = new System.Drawing.Point(204, 153);
-            this.lblDiaPressure.Name = "lblDiaPressure";
-            this.lblDiaPressure.Size = new System.Drawing.Size(35, 18);
-            this.lblDiaPressure.TabIndex = 3;
-            this.lblDiaPressure.Text = "100";
             // 
             // Monitor
             // 
@@ -664,10 +668,11 @@
             this.Controls.Add(this.gbxThresholds);
             this.Controls.Add(this.cbxBed);
             this.Controls.Add(this.Btn_close);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Monitor";
-            this.Text = "PatientMonitor";
+            this.Text = "Monitor Beds";
             this.Click += new System.EventHandler(this.btnSet_Click);
             this.gbxThresholds.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
