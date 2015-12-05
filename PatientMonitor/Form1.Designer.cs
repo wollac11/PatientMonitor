@@ -95,7 +95,7 @@
             this.Controls.Add(this.btnOption);
             this.Controls.Add(this.btnExit);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Main Menu";
             this.ResumeLayout(false);
             this.PerformLayout();
 

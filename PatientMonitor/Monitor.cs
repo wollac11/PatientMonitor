@@ -90,6 +90,16 @@ namespace PatientMonitor
             MaxRate(tbrTempMax, temperature);
         }
 
+        //limit alarms
+        bool alarmLimit = false;
+
+        //reset alarm
+        public void AlarmLimit ()
+        {
+            alarmLimit = false;
+        }
+
+
         /// <summary>
         /// The Minimum limit for the alarm
         /// </summary>
@@ -100,13 +110,18 @@ namespace PatientMonitor
             //convert to int
             int limit = Convert.ToInt32(tbrLimit.Value);
             int rate = Convert.ToInt32(lblRate.Text);
+
             //when rate goes below min
             if (rate < limit)
             {
-                //PLACE ALARM
-                AlarmBelow m = new AlarmBelow();
-                m.Show();
-
+                //Limit alarm to 1
+                if (alarmLimit == false)
+                {
+                    //PLACE ALARM
+                    AlarmBelow m = new AlarmBelow();
+                    m.Show();
+                    alarmLimit = true;
+                }
                 //MessageBox.Show("Patient is BELOW limit");
             }
         }
@@ -121,13 +136,18 @@ namespace PatientMonitor
             //convert to int
             int limit = Convert.ToInt32(tbrLimit.Value);
             int rate = Convert.ToInt32(lblRate.Text);
+
             //when rate goes below min
             if (rate > limit)
             {
-                //PLACE ALARM
-                AlarmAbove m = new AlarmAbove();
-                m.Show();
-
+                //limit alarm to 1
+                if (alarmLimit == false)
+                {
+                    //PLACE ALARM
+                    AlarmAbove m = new AlarmAbove();
+                    m.Show();
+                    alarmLimit = true;
+                }
                 //MessageBox.Show("Patient is ABOVE limit");
             }
         }

@@ -37,6 +37,13 @@ namespace PatientMonitor
             //stop the timer and alarm sound when user clicks disable
             tmrBelowLimit.Stop();
             MutableAlarm.Stop();
+
+            //close the form once pressed
+            this.Close();
+
+            //reset limit
+            Monitor limit = new Monitor();
+            limit.AlarmLimit();
         }
     }
 }

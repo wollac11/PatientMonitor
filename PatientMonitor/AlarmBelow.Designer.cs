@@ -66,8 +66,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 51);
+            this.ControlBox = false;
             this.Controls.Add(this.btnDisableBelow);
             this.Controls.Add(this.lblCounterBelow);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "AlarmBelow";
             this.Text = "Patient Below Limit!";
             this.ResumeLayout(false);
