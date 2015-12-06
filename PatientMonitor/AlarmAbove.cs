@@ -21,34 +21,48 @@ namespace PatientMonitor
         //add soundplayer function which will play a resource file
         SoundPlayer MutableAlarm = new SoundPlayer(ResourceAlarm.MutableAlarm);
 
-        //create varible to save time
-        int saveTimer;
+
+        int _saveTimer;
+
+        //create property to save timer
+        public int saveTimer
+        {
+            get
+            {
+                return this._saveTimer;
+            }
+        }
 
         //add int value to work as a visable counter
         int i = 0;
         private void tmrAboveLimit_Tick(object sender, EventArgs e)
         {
-            //play alarm sound when timer starts and command it to loop
-            MutableAlarm.PlayLooping();
-            i++;
-            //convert int value to appear as text
-            lblCounterAbove.Text = i.ToString() + " Seconds";
+            if (Application.OpenForms.OfType<AlarmAbove>().Any())
+            {
+                //play alarm sound when timer starts and command it to loop
+                MutableAlarm.PlayLooping();
+                i++;
+                //convert int value to appear as text
+                lblCounterAbove.Text = i.ToString() + " Seconds";
+            }
         }
 
         private void btnDisableAbove_Click(object sender, EventArgs e)
         {
             //have time stored
-            saveTimer = i;
-            //stop the timer and alarm sound when user clicks disable
-            tmrAboveLimit.Stop();
-            MutableAlarm.Stop();
+            _saveTimer = i;
+
+            //call timer recorder method to record the time taken
+            TimerRecorder timesUp = new TimerRecorder();
+            timesUp.csvWriter();
 
             //close the form once pressed
             this.Close();
 
-            //reset limit
-            Monitor limit = new Monitor();
-            limit.AlarmLimit();
+            //stop the timer and alarm sound when user clicks disable
+            tmrAboveLimit.Stop();
+            MutableAlarm.Stop();
+
 
         }
     }

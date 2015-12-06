@@ -66,9 +66,13 @@ namespace PatientMonitor
             lblDiaPressureMax.Text = tbrDiaPressureMax.Value.ToString();
         }
 
+        /// <summary>
+        /// send all the patient details and custom limits through MinRate and MaxRate method
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSet_Click(object sender, EventArgs e)
         {
-          
             //call MinRate and MaxRate
             MinRate(tbrHRMin, heartRate);
             MaxRate(tbrHRMax, heartRate);
@@ -89,17 +93,6 @@ namespace PatientMonitor
             MinRate(tbrTempMin, temperature);
             MaxRate(tbrTempMax, temperature);
         }
-
-        //limit alarms
-        bool alarmLimit = false;
-
-        //reset alarm
-        public void AlarmLimit ()
-        {
-            alarmLimit = false;
-        }
-
-
         /// <summary>
         /// The Minimum limit for the alarm
         /// </summary>
@@ -114,15 +107,14 @@ namespace PatientMonitor
             //when rate goes below min
             if (rate < limit)
             {
-                //Limit alarm to 1
-                if (alarmLimit == false)
+                //if there isnt already an alarm
+                //help from http://stackoverflow.com/questions/13445155/how-to-check-if-form-is-open-if-open-close-form
+                if (!Application.OpenForms.OfType<AlarmBelow>().Any())
                 {
                     //PLACE ALARM
                     AlarmBelow m = new AlarmBelow();
                     m.Show();
-                    alarmLimit = true;
                 }
-                //MessageBox.Show("Patient is BELOW limit");
             }
         }
 
@@ -140,15 +132,13 @@ namespace PatientMonitor
             //when rate goes below min
             if (rate > limit)
             {
-                //limit alarm to 1
-                if (alarmLimit == false)
+                //if there isnt already an alarm
+                if (!Application.OpenForms.OfType<AlarmAbove>().Any())
                 {
                     //PLACE ALARM
                     AlarmAbove m = new AlarmAbove();
                     m.Show();
-                    alarmLimit = true;
                 }
-                //MessageBox.Show("Patient is ABOVE limit");
             }
         }
 
