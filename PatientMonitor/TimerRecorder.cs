@@ -27,7 +27,9 @@ namespace PatientMonitor
         public void csvWriter()
         {
             //path to where the file will save
-            string fileAddress = "c:\\TimerRecords.csv";
+            //got help from:
+            //http://stackoverflow.com/questions/20997716/how-to-edit-text-file-in-resources-folder-of-window-form-c-sharp
+            string fileAddress = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "TimerRecords.csv");
             //delimiter to space the time apart
             string delimiter = ",";
 
@@ -48,12 +50,12 @@ namespace PatientMonitor
 
             int arrayLength = alarmTimes.GetLength(0);
             StringBuilder stringbuild = new StringBuilder();
-            for(int i = 0; i < arrayLength; i++)
+            for (int i = 0; i < arrayLength; i++)
             {
                 stringbuild.AppendLine(string.Join(delimiter, alarmTimes[i]));
             }
 
-            File.WriteAllText(fileAddress, stringbuild.ToString());
+            File.AppendAllText(fileAddress, stringbuild.ToString());
 
         }
     }
