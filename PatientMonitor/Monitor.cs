@@ -82,6 +82,10 @@ namespace PatientMonitor
             MaxRate(tbrSysPressureMax, bloodPressure);
 
             //call MinRate and MaxRate
+            MinRate(tbrDiaPressureMin, lblDiaPressure);
+            MaxRate(tbrDiaPressureMax, lblDiaPressure);
+
+            //call MinRate and MaxRate
             MinRate(tbrTempMin, temperature);
             MaxRate(tbrTempMax, temperature);
         }
