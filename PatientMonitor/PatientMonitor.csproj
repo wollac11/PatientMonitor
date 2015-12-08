@@ -95,7 +95,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ResourceAlarm.resx</DependentUpon>
     </Compile>
-    <Compile Include="SensorData.cs" />
+    <Compile Include="Sensor.cs" />
     <EmbeddedResource Include="About.resx">
       <DependentUpon>About.cs</DependentUpon>
     </EmbeddedResource>

@@ -156,6 +156,21 @@ namespace PatientMonitor
 
         private void timerRefresh_Tick(object sender, EventArgs e)
         {
+            updateDisplay();
+        }
+
+        private void updateDisplay()
+        {
+            // Updates display with sensor values only if a bed is selected 
+            if (cbxBed.SelectedIndex > -1)
+            {
+                heartRate.Text = Sensor.heartRate.ToString();
+                temperature.Text = Sensor.bodyTemp.ToString();
+                breathingRate.Text = Sensor.breathRate.ToString();
+                bloodPressure.Text = Sensor.sysPressure.ToString();
+                lblDiaPressure.Text = Sensor.diaPressure.ToString();
+            }
+            
         }
 
         static bool _hrEnable = true;
