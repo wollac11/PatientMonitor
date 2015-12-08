@@ -21,8 +21,10 @@ namespace PatientMonitor
         //add soundplayer function which will play a resource file
         SoundPlayer MutableAlarm = new SoundPlayer(ResourceAlarm.MutableAlarm);
 
+        public string saveTimer;
 
-        public int saveTimer;
+        //public property to collect the timer number in seconds
+
 
         //add int value to work as a visable counter
         int i;
@@ -33,7 +35,7 @@ namespace PatientMonitor
                 //play alarm sound when timer starts and command it to loop
                 MutableAlarm.PlayLooping();
                 i++;
-                saveTimer++;
+                
                 //convert int value to appear as text
                 lblCounterAbove.Text = i.ToString() + " Seconds";
              }
@@ -44,7 +46,13 @@ namespace PatientMonitor
 
             //call timer recorder method to record the time taken
             TimerRecorder timesUp = new TimerRecorder();
-            timesUp.csvWriter();
+
+
+            //collect seconds from the label
+            saveTimer = lblCounterAbove.Text;
+
+            //call timer recorder class
+            timesUp.csvWriter(lblCounterAbove.Text);
 
             //close the form once pressed
             this.Close();
