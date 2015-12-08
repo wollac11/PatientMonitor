@@ -73,25 +73,38 @@ namespace PatientMonitor
             // Apply threshold values only if a bed is selected 
             if (cbxBed.SelectedIndex > -1)
             {
-                //call MinRate and MaxRate
-                MinRate(tbrHRMin, heartRate);
-                MaxRate(tbrHRMax, heartRate);
+                if (_hrEnable == true)
+                {
+                    //call MinRate and MaxRate
+                    MinRate(tbrHRMin, heartRate);
+                    MaxRate(tbrHRMax, heartRate);
+                }
 
-                //call MinRate and MaxRate
-                MinRate(tbrBRMin, breathingRate);
-                MaxRate(tbrBRMax, breathingRate);
+                if (_breathEnable == true)
+                {
+                    //call MinRate and MaxRate
+                    MinRate(tbrBRMin, breathingRate);
+                    MaxRate(tbrBRMax, breathingRate);
+                }
+                    
+                if (_pressureEnable == true)
+                {
+                    //call MinRate and MaxRate
+                    MinRate(tbrSysPressureMin, bloodPressure);
+                    MaxRate(tbrSysPressureMax, bloodPressure);
 
-                //call MinRate and MaxRate
-                MinRate(tbrSysPressureMin, bloodPressure);
-                MaxRate(tbrSysPressureMax, bloodPressure);
+                    //call MinRate and MaxRate
+                    MinRate(tbrDiaPressureMin, lblDiaPressure);
+                    MaxRate(tbrDiaPressureMax, lblDiaPressure);
+                }
 
-                //call MinRate and MaxRate
-                MinRate(tbrDiaPressureMin, lblDiaPressure);
-                MaxRate(tbrDiaPressureMax, lblDiaPressure);
-
-                //call MinRate and MaxRate
-                MinRate(tbrTempMin, temperature);
-                MaxRate(tbrTempMax, temperature);
+                if (_tempEnable == true)
+                {
+                    //call MinRate and MaxRate
+                    MinRate(tbrTempMin, temperature);
+                    MaxRate(tbrTempMax, temperature);
+                }
+                
             }
             else
             {
@@ -161,14 +174,25 @@ namespace PatientMonitor
 
         private void updateDisplay()
         {
-            // Updates display with sensor values only if a bed is selected 
+            // Updates display with enabled sensor values only if a bed is selected 
             if (cbxBed.SelectedIndex > -1)
             {
-                heartRate.Text = Sensor.heartRate.ToString();
-                temperature.Text = Sensor.bodyTemp.ToString();
-                breathingRate.Text = Sensor.breathRate.ToString();
-                bloodPressure.Text = Sensor.sysPressure.ToString();
-                lblDiaPressure.Text = Sensor.diaPressure.ToString();
+                if (_hrEnable == true) heartRate.Text = Sensor.heartRate.ToString();
+                else heartRate.Text = "---";
+                if (_tempEnable == true) temperature.Text = Sensor.bodyTemp.ToString();
+                else temperature.Text = "---";
+                if (_breathEnable == true) breathingRate.Text = Sensor.breathRate.ToString();
+                else breathingRate.Text = "---";
+                if (_pressureEnable == true)
+                {
+                    bloodPressure.Text = Sensor.sysPressure.ToString();
+                    lblDiaPressure.Text = Sensor.diaPressure.ToString();
+                }
+                else
+                {
+                    bloodPressure.Text = "---";
+                    lblDiaPressure.Text = "---";
+                }
             }
             
         }
