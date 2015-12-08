@@ -154,7 +154,7 @@
             // 
             this.heartRate.AutoSize = true;
             this.heartRate.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.heartRate.Location = new System.Drawing.Point(41, 70);
+            this.heartRate.Location = new System.Drawing.Point(52, 70);
             this.heartRate.Name = "heartRate";
             this.heartRate.Size = new System.Drawing.Size(23, 18);
             this.heartRate.TabIndex = 1;
@@ -164,7 +164,7 @@
             // 
             this.breathingRate.AutoSize = true;
             this.breathingRate.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.breathingRate.Location = new System.Drawing.Point(349, 70);
+            this.breathingRate.Location = new System.Drawing.Point(361, 70);
             this.breathingRate.Name = "breathingRate";
             this.breathingRate.Size = new System.Drawing.Size(23, 18);
             this.breathingRate.TabIndex = 1;
@@ -174,7 +174,7 @@
             // 
             this.bloodPressure.AutoSize = true;
             this.bloodPressure.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bloodPressure.Location = new System.Drawing.Point(98, 153);
+            this.bloodPressure.Location = new System.Drawing.Point(105, 153);
             this.bloodPressure.Name = "bloodPressure";
             this.bloodPressure.Size = new System.Drawing.Size(23, 18);
             this.bloodPressure.TabIndex = 1;
@@ -622,7 +622,7 @@
             // 
             this.lblDiaPressure.AutoSize = true;
             this.lblDiaPressure.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDiaPressure.Location = new System.Drawing.Point(286, 153);
+            this.lblDiaPressure.Location = new System.Drawing.Point(303, 153);
             this.lblDiaPressure.Name = "lblDiaPressure";
             this.lblDiaPressure.Size = new System.Drawing.Size(23, 18);
             this.lblDiaPressure.TabIndex = 3;
