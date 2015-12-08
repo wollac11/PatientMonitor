@@ -30,11 +30,11 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Menu));
             this.btnExit = new System.Windows.Forms.Button();
-            this.btnOption = new System.Windows.Forms.Button();
             this.btnMonitor = new System.Windows.Forms.Button();
             this.btnManage = new System.Windows.Forms.Button();
             this.lblStatus = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnAbout = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -49,17 +49,6 @@
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
-            // 
-            // btnOption
-            // 
-            this.btnOption.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnOption.Location = new System.Drawing.Point(12, 228);
-            this.btnOption.Name = "btnOption";
-            this.btnOption.Size = new System.Drawing.Size(75, 23);
-            this.btnOption.TabIndex = 1;
-            this.btnOption.Text = "Options";
-            this.btnOption.UseVisualStyleBackColor = true;
-            this.btnOption.Click += new System.EventHandler(this.btnOption_Click);
             // 
             // btnMonitor
             // 
@@ -103,15 +92,26 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Main Menu";
             // 
+            // btnAbout
+            // 
+            this.btnAbout.Cursor = System.Windows.Forms.Cursors.Help;
+            this.btnAbout.Location = new System.Drawing.Point(12, 228);
+            this.btnAbout.Name = "btnAbout";
+            this.btnAbout.Size = new System.Drawing.Size(75, 23);
+            this.btnAbout.TabIndex = 4;
+            this.btnAbout.Text = "About";
+            this.btnAbout.UseVisualStyleBackColor = true;
+            this.btnAbout.Click += new System.EventHandler(this.btnAbout_Click);
+            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnExit;
             this.ClientSize = new System.Drawing.Size(369, 259);
+            this.Controls.Add(this.btnAbout);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lblStatus);
-            this.Controls.Add(this.btnOption);
             this.Controls.Add(this.btnExit);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -127,11 +127,11 @@
         #endregion
 
         private System.Windows.Forms.Button btnExit;
-        private System.Windows.Forms.Button btnOption;
         private System.Windows.Forms.Button btnMonitor;
         private System.Windows.Forms.Button btnManage;
         private System.Windows.Forms.Label lblStatus;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button btnAbout;
     }
 }
 

@@ -81,6 +81,7 @@
             this.lblBed = new System.Windows.Forms.Label();
             this.tipThresholds = new System.Windows.Forms.ToolTip(this.components);
             this.btnOptions = new System.Windows.Forms.Button();
+            this.timerRefresh = new System.Windows.Forms.Timer(this.components);
             this.gbxThresholds.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -657,6 +658,12 @@
             this.btnOptions.UseVisualStyleBackColor = true;
             this.btnOptions.Click += new System.EventHandler(this.btnOptions_Click);
             // 
+            // timerRefresh
+            // 
+            this.timerRefresh.Enabled = true;
+            this.timerRefresh.Interval = 1000;
+            this.timerRefresh.Tick += new System.EventHandler(this.timerRefresh_Tick);
+            // 
             // Monitor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -750,5 +757,6 @@
         private System.Windows.Forms.TrackBar tbrBRMax;
         private System.Windows.Forms.Label lblDiaPressure;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Timer timerRefresh;
     }
 }

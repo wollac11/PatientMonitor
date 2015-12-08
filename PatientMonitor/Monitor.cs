@@ -12,6 +12,7 @@ namespace PatientMonitor
 {
     public partial class Monitor : Form
     {
+
         public Monitor()
         {
             InitializeComponent();
@@ -68,26 +69,36 @@ namespace PatientMonitor
 
         private void btnSet_Click(object sender, EventArgs e)
         {
-          
-            //call MinRate and MaxRate
-            MinRate(tbrHRMin, heartRate);
-            MaxRate(tbrHRMax, heartRate);
 
-            //call MinRate and MaxRate
-            MinRate(tbrBRMin, breathingRate);
-            MaxRate(tbrBRMax, breathingRate);
+            // Apply threshold values only if a bed is selected 
+            if (cbxBed.SelectedIndex > -1)
+            {
+                //call MinRate and MaxRate
+                MinRate(tbrHRMin, heartRate);
+                MaxRate(tbrHRMax, heartRate);
 
-            //call MinRate and MaxRate
-            MinRate(tbrSysPressureMin, bloodPressure);
-            MaxRate(tbrSysPressureMax, bloodPressure);
+                //call MinRate and MaxRate
+                MinRate(tbrBRMin, breathingRate);
+                MaxRate(tbrBRMax, breathingRate);
 
-            //call MinRate and MaxRate
-            MinRate(tbrDiaPressureMin, lblDiaPressure);
-            MaxRate(tbrDiaPressureMax, lblDiaPressure);
+                //call MinRate and MaxRate
+                MinRate(tbrSysPressureMin, bloodPressure);
+                MaxRate(tbrSysPressureMax, bloodPressure);
 
-            //call MinRate and MaxRate
-            MinRate(tbrTempMin, temperature);
-            MaxRate(tbrTempMax, temperature);
+                //call MinRate and MaxRate
+                MinRate(tbrDiaPressureMin, lblDiaPressure);
+                MaxRate(tbrDiaPressureMax, lblDiaPressure);
+
+                //call MinRate and MaxRate
+                MinRate(tbrTempMin, temperature);
+                MaxRate(tbrTempMax, temperature);
+            }
+            else
+            {
+                MessageBox.Show("Error: You must select a bed first.", "No bed selected!");
+            }
+
+           
         }
 
         /// <summary>
@@ -97,9 +108,9 @@ namespace PatientMonitor
         /// <param name="lblRate">one of the 4 body rates</param>
         private void MinRate(TrackBar tbrLimit, Label lblRate)
         {
-            //convert to int
-            int limit = Convert.ToInt32(tbrLimit.Value);
-            int rate = Convert.ToInt32(lblRate.Text);
+            // Convert to double
+            Double limit = Convert.ToDouble(tbrLimit.Value);
+            Double rate = Convert.ToDouble(lblRate.Text);
             //when rate goes below min
             if (rate < limit)
             {
@@ -118,9 +129,9 @@ namespace PatientMonitor
         /// <param name="lblRate">one of the 4 body rates</param>
         private void MaxRate(TrackBar tbrLimit, Label lblRate)
         {
-            //convert to int
-            int limit = Convert.ToInt32(tbrLimit.Value);
-            int rate = Convert.ToInt32(lblRate.Text);
+            // Convert to double
+            Double limit = Convert.ToDouble(tbrLimit.Value);
+            Double rate = Convert.ToDouble(lblRate.Text);
             //when rate goes below min
             if (rate > limit)
             {
@@ -142,5 +153,38 @@ namespace PatientMonitor
             Options m = new Options();
             m.Show();
         }
+
+        private void timerRefresh_Tick(object sender, EventArgs e)
+        {
+        }
+
+        static bool _hrEnable = true;
+        public static bool hrEnable
+        {
+            get { return _hrEnable; }
+            set { _hrEnable = value;}
+        }
+
+        static bool _pressureEnable = true;
+        public static bool pressureEnable
+        {
+            get { return _pressureEnable; }
+            set { _pressureEnable = value; }
+        }
+
+        static bool _breathEnable = true;
+        public static bool breathEnable
+        {
+            get { return _breathEnable; }
+            set { _breathEnable = value; }
+        }
+
+        static bool _tempEnable = true;
+        public static bool tempEnable
+        {
+            get { return _tempEnable; }
+            set { _tempEnable = value; }
+        }
+
     }
 }
