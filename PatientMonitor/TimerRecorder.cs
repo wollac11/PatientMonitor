@@ -15,11 +15,6 @@ namespace PatientMonitor
         {
 
         }
-        //collect timer data from Alarm Above
-        AlarmAbove alarmAbove = new AlarmAbove();
-
-        //Collect timer data from Alarm Below
-        AlarmBelow alarmBelow = new AlarmBelow();
 
         /// <summary>
         /// Write timers to CSV
