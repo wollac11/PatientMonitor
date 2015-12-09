@@ -1,6 +1,6 @@
 ﻿namespace PatientMonitor
 {
-    partial class Form1
+    partial class Menu
     {
         /// <summary>
         /// Required designer variable.
@@ -28,16 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Menu));
             this.btnExit = new System.Windows.Forms.Button();
-            this.btnOption = new System.Windows.Forms.Button();
             this.btnMonitor = new System.Windows.Forms.Button();
             this.btnManage = new System.Windows.Forms.Button();
             this.lblStatus = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnAbout = new System.Windows.Forms.Button();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(282, 308);
+            this.btnExit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnExit.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnExit.Location = new System.Drawing.Point(282, 228);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(75, 23);
             this.btnExit.TabIndex = 0;
@@ -45,21 +50,12 @@
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
-            // btnOption
-            // 
-            this.btnOption.Location = new System.Drawing.Point(12, 308);
-            this.btnOption.Name = "btnOption";
-            this.btnOption.Size = new System.Drawing.Size(75, 23);
-            this.btnOption.TabIndex = 1;
-            this.btnOption.Text = "Options";
-            this.btnOption.UseVisualStyleBackColor = true;
-            this.btnOption.Click += new System.EventHandler(this.btnOption_Click);
-            // 
             // btnMonitor
             // 
-            this.btnMonitor.Location = new System.Drawing.Point(148, 103);
+            this.btnMonitor.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMonitor.Location = new System.Drawing.Point(6, 43);
             this.btnMonitor.Name = "btnMonitor";
-            this.btnMonitor.Size = new System.Drawing.Size(75, 23);
+            this.btnMonitor.Size = new System.Drawing.Size(328, 53);
             this.btnMonitor.TabIndex = 2;
             this.btnMonitor.Text = "Monitor";
             this.btnMonitor.UseVisualStyleBackColor = true;
@@ -67,9 +63,10 @@
             // 
             // btnManage
             // 
-            this.btnManage.Location = new System.Drawing.Point(148, 133);
+            this.btnManage.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnManage.Location = new System.Drawing.Point(6, 121);
             this.btnManage.Name = "btnManage";
-            this.btnManage.Size = new System.Drawing.Size(75, 23);
+            this.btnManage.Size = new System.Drawing.Size(328, 50);
             this.btnManage.TabIndex = 3;
             this.btnManage.Text = "Manage";
             this.btnManage.UseVisualStyleBackColor = true;
@@ -78,24 +75,50 @@
             // lblStatus
             // 
             this.lblStatus.AutoSize = true;
-            this.lblStatus.Location = new System.Drawing.Point(167, 313);
+            this.lblStatus.Location = new System.Drawing.Point(167, 233);
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(37, 13);
             this.lblStatus.TabIndex = 4;
             this.lblStatus.Text = "Status";
             // 
-            // Form1
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.btnManage);
+            this.groupBox1.Controls.Add(this.btnMonitor);
+            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(344, 210);
+            this.groupBox1.TabIndex = 5;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Main Menu";
+            // 
+            // btnAbout
+            // 
+            this.btnAbout.Cursor = System.Windows.Forms.Cursors.Help;
+            this.btnAbout.Location = new System.Drawing.Point(12, 228);
+            this.btnAbout.Name = "btnAbout";
+            this.btnAbout.Size = new System.Drawing.Size(75, 23);
+            this.btnAbout.TabIndex = 4;
+            this.btnAbout.Text = "About";
+            this.btnAbout.UseVisualStyleBackColor = true;
+            this.btnAbout.Click += new System.EventHandler(this.btnAbout_Click);
+            // 
+            // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(369, 343);
+            this.CancelButton = this.btnExit;
+            this.ClientSize = new System.Drawing.Size(369, 259);
+            this.Controls.Add(this.btnAbout);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lblStatus);
-            this.Controls.Add(this.btnManage);
-            this.Controls.Add(this.btnMonitor);
-            this.Controls.Add(this.btnOption);
             this.Controls.Add(this.btnExit);
-            this.Name = "Form1";
-            this.Text = "Main Menu";
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.Name = "Menu";
+            this.Text = "Patient Monitor";
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -104,10 +127,11 @@
         #endregion
 
         private System.Windows.Forms.Button btnExit;
-        private System.Windows.Forms.Button btnOption;
         private System.Windows.Forms.Button btnMonitor;
         private System.Windows.Forms.Button btnManage;
         private System.Windows.Forms.Label lblStatus;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button btnAbout;
     }
 }
 
