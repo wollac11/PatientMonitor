@@ -32,10 +32,7 @@ namespace PatientMonitor
             // Time record delimiter
             string delimiter = ",";
 
-            // Create an array to store time
-            string[] timeData = new string[] { "Time taken to disable alarm:", timer };
-
-            // Build CSV string to use for the array
+            // Build CSV string for response times
             StringBuilder stringbuild = new StringBuilder();
             stringbuild.AppendLine(string.Join(delimiter, timer));
 
