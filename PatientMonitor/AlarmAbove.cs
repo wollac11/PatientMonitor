@@ -22,21 +22,37 @@ namespace PatientMonitor
         SoundPlayer MutableAlarm = new SoundPlayer(ResourceAlarm.MutableAlarm);
 
         //add int value to work as a visable counter
-        int i = 0;
+        int i;
         private void tmrAboveLimit_Tick(object sender, EventArgs e)
         {
-            //play alarm sound when timer starts and command it to loop
-            MutableAlarm.PlayLooping();
-            i++;
-            //convert int value to appear as text
-            lblCounterAbove.Text = i.ToString() + " Seconds";
+            if (Application.OpenForms.OfType<AlarmAbove>().Any())
+            {
+                //play alarm sound when timer starts and command it to loop
+                MutableAlarm.PlayLooping();
+                i++;
+                
+                //convert int value to appear as text
+                lblCounterAbove.Text = i.ToString() + " Seconds";
+             }
         }
 
         private void btnDisableAbove_Click(object sender, EventArgs e)
         {
+
+            //call timer recorder method to record the time taken
+            TimerRecorder timesUp = new TimerRecorder();
+
+            //call timer recorder class
+            timesUp.csvWriter(lblCounterAbove.Text);
+
+            //close the form once pressed
+            this.Close();
+
             //stop the timer and alarm sound when user clicks disable
             tmrAboveLimit.Stop();
             MutableAlarm.Stop();
+
+
         }
     }
 }
