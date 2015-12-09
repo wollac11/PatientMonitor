@@ -205,6 +205,7 @@
             "Bed 8",
             "Bed 9"});
             this.cbxBed.Location = new System.Drawing.Point(52, 12);
+            this.cbxBed.MaxDropDownItems = 10;
             this.cbxBed.Name = "cbxBed";
             this.cbxBed.Size = new System.Drawing.Size(121, 21);
             this.cbxBed.TabIndex = 4;

@@ -67,9 +67,13 @@ namespace PatientMonitor
             lblDiaPressureMax.Text = tbrDiaPressureMax.Value.ToString();
         }
 
+        /// <summary>
+        /// send all the patient details and custom limits through MinRate and MaxRate method
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSet_Click(object sender, EventArgs e)
         {
-
             // Apply threshold values only if a bed is selected 
             if (cbxBed.SelectedIndex > -1)
             {
@@ -113,7 +117,6 @@ namespace PatientMonitor
 
            
         }
-
         /// <summary>
         /// The Minimum limit for the alarm
         /// </summary>
@@ -124,14 +127,18 @@ namespace PatientMonitor
             // Convert to double
             Double limit = Convert.ToDouble(tbrLimit.Value);
             Double rate = Convert.ToDouble(lblRate.Text);
+
             //when rate goes below min
             if (rate < limit)
             {
-                //PLACE ALARM
-                AlarmBelow m = new AlarmBelow();
-                m.Show();
-
-                //MessageBox.Show("Patient is BELOW limit");
+                //if there isnt already an alarm
+                //help from http://stackoverflow.com/questions/13445155/how-to-check-if-form-is-open-if-open-close-form
+                if (!Application.OpenForms.OfType<AlarmBelow>().Any())
+                {
+                    //PLACE ALARM
+                    AlarmBelow m = new AlarmBelow();
+                    m.Show();
+                }
             }
         }
 
@@ -145,14 +152,17 @@ namespace PatientMonitor
             // Convert to double
             Double limit = Convert.ToDouble(tbrLimit.Value);
             Double rate = Convert.ToDouble(lblRate.Text);
+
             //when rate goes below min
             if (rate > limit)
             {
-                //PLACE ALARM
-                AlarmAbove m = new AlarmAbove();
-                m.Show();
-
-                //MessageBox.Show("Patient is ABOVE limit");
+                //if there isnt already an alarm
+                if (!Application.OpenForms.OfType<AlarmAbove>().Any())
+                {
+                    //PLACE ALARM
+                    AlarmAbove m = new AlarmAbove();
+                    m.Show();
+                }
             }
         }
 
