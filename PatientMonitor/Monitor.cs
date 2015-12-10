@@ -77,37 +77,16 @@ namespace PatientMonitor
             // Apply threshold values only if a bed is selected 
             if (cbxBed.SelectedIndex > -1)
             {
-                if (_hrEnable == true)
-                {
-                    //call MinRate and MaxRate
-                    MinRate(tbrHRMin, heartRate);
-                    MaxRate(tbrHRMax, heartRate);
-                }
 
-                if (_breathEnable == true)
-                {
-                    //call MinRate and MaxRate
-                    MinRate(tbrBRMin, breathingRate);
-                    MaxRate(tbrBRMax, breathingRate);
-                }
-                    
-                if (_pressureEnable == true)
-                {
-                    //call MinRate and MaxRate
-                    MinRate(tbrSysPressureMin, bloodPressure);
-                    MaxRate(tbrSysPressureMax, bloodPressure);
+                // Set heart rate threshold
+ 
+                // Set breathing rate threshold
+                
+                // Set Systolic pressure threshold
 
-                    //call MinRate and MaxRate
-                    MinRate(tbrDiaPressureMin, lblDiaPressure);
-                    MaxRate(tbrDiaPressureMax, lblDiaPressure);
-                }
+                // Set Diastolic pressure threshold
 
-                if (_tempEnable == true)
-                {
-                    //call MinRate and MaxRate
-                    MinRate(tbrTempMin, temperature);
-                    MaxRate(tbrTempMax, temperature);
-                }
+                // Set temperature threshold
                 
             }
             else
@@ -180,6 +159,7 @@ namespace PatientMonitor
         private void timerRefresh_Tick(object sender, EventArgs e)
         {
             updateDisplay();
+            checkAlarm();
         }
 
         private void updateDisplay()
@@ -205,6 +185,41 @@ namespace PatientMonitor
                 }
             }
             
+        }
+
+        private void checkAlarm()
+        {
+            if (_hrEnable == true)
+            {
+                //call MinRate and MaxRate
+                MinRate(tbrHRMin, heartRate);
+                MaxRate(tbrHRMax, heartRate);
+            }
+
+            if (_breathEnable == true)
+            {
+                //call MinRate and MaxRate
+                MinRate(tbrBRMin, breathingRate);
+                MaxRate(tbrBRMax, breathingRate);
+            }
+
+            if (_pressureEnable == true)
+            {
+                //call MinRate and MaxRate
+                MinRate(tbrSysPressureMin, bloodPressure);
+                MaxRate(tbrSysPressureMax, bloodPressure);
+
+                //call MinRate and MaxRate
+                MinRate(tbrDiaPressureMin, lblDiaPressure);
+                MaxRate(tbrDiaPressureMax, lblDiaPressure);
+            }
+
+            if (_tempEnable == true)
+            {
+                //call MinRate and MaxRate
+                MinRate(tbrTempMin, temperature);
+                MaxRate(tbrTempMax, temperature);
+            }
         }
 
         static bool _hrEnable = true;
@@ -237,7 +252,12 @@ namespace PatientMonitor
 
         private void cbxBed_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Sensor.initialize();
+            if (cbxBed.SelectedIndex > -1)
+            {
+                Sensor.initialize();
+                timerRefresh.Enabled = true;
+            }
+            else timerRefresh.Enabled = false;
         }
     }
 }
