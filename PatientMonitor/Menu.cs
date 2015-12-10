@@ -28,12 +28,6 @@ namespace PatientMonitor
             }
         }
 
-        private void btnOption_Click(object sender, EventArgs e)
-        {
-            Options m = new Options();
-            m.Show();
-        }
-
         private void btnManage_Click(object sender, EventArgs e)
         {
             Management m = new Management();
