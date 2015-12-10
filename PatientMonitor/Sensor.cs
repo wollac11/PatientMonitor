@@ -21,7 +21,7 @@ namespace PatientMonitor
             get { return _bodyTemp(); }
         }
 
-        public static double heartRate
+        public static int heartRate
         {
             get { return _heartRate(); }
         }
