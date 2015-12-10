@@ -42,6 +42,15 @@ namespace PatientMonitor
             get { return _breathRate(); }
         }
 
+        public static void initialize()
+        {
+            prevDia = 0;
+            prevSys = 0;
+            prevHR = 0;
+            prevTemp = 0;
+            prevBr = 0;
+        }
+
         private static int _diaPressure() 
         {
             if (prevDia == 0)

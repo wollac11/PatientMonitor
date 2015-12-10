@@ -235,5 +235,9 @@ namespace PatientMonitor
             set { _tempEnable = value; }
         }
 
+        private void cbxBed_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Sensor.initialize();
+        }
     }
 }

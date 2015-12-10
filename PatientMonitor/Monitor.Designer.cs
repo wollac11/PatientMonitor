@@ -209,6 +209,7 @@
             this.cbxBed.Name = "cbxBed";
             this.cbxBed.Size = new System.Drawing.Size(121, 21);
             this.cbxBed.TabIndex = 4;
+            this.cbxBed.SelectedIndexChanged += new System.EventHandler(this.cbxBed_SelectedIndexChanged);
             // 
             // Btn_close
             // 
