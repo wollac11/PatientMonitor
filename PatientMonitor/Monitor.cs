@@ -185,7 +185,7 @@ namespace PatientMonitor
             if (_tempEnable == true)
             {
                 // Check temperature
-                double curTemp = (double.Parse(temperature.Text));
+                double curTemp = double.Parse(temperature.Text);
                 // Place alarm if past min or max threshold
                 if (curTemp < minThreshold[4] || curTemp > maxThreshold[4]) placeAlarm();
             }
