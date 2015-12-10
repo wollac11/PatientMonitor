@@ -71,7 +71,7 @@ namespace PatientMonitor
         int[] maxThreshold = new int[5];
 
         /// <summary>
-        /// send all the patient details and custom limits through MinRate and MaxRate method
+        /// Applies min and max alarm thresholds for current patient vitals
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
