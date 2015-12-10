@@ -1,6 +1,6 @@
 ﻿namespace PatientMonitor
 {
-    partial class AlarmBelow
+    partial class Alarm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,72 +29,73 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.tmrBelowLimit = new System.Windows.Forms.Timer(this.components);
-            this.lblCounterBelow = new System.Windows.Forms.Label();
-            this.btnDisableBelow = new System.Windows.Forms.Button();
+            this.tmrAboveLimit = new System.Windows.Forms.Timer(this.components);
+            this.lblCounterAbove = new System.Windows.Forms.Label();
+            this.btnDisableAbove = new System.Windows.Forms.Button();
+            this.pageSetupDialog1 = new System.Windows.Forms.PageSetupDialog();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // tmrBelowLimit
+            // tmrAboveLimit
             // 
-            this.tmrBelowLimit.Enabled = true;
-            this.tmrBelowLimit.Interval = 1000;
-            this.tmrBelowLimit.Tick += new System.EventHandler(this.tmrBelowLimit_Tick);
+            this.tmrAboveLimit.Enabled = true;
+            this.tmrAboveLimit.Interval = 1000;
+            this.tmrAboveLimit.Tick += new System.EventHandler(this.tmrAboveLimit_Tick);
             // 
-            // lblCounterBelow
+            // lblCounterAbove
             // 
-            this.lblCounterBelow.AutoSize = true;
-            this.lblCounterBelow.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCounterBelow.Location = new System.Drawing.Point(52, 9);
-            this.lblCounterBelow.Name = "lblCounterBelow";
-            this.lblCounterBelow.Size = new System.Drawing.Size(31, 33);
-            this.lblCounterBelow.TabIndex = 0;
-            this.lblCounterBelow.Text = "0";
+            this.lblCounterAbove.AutoSize = true;
+            this.lblCounterAbove.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCounterAbove.Location = new System.Drawing.Point(49, 12);
+            this.lblCounterAbove.Name = "lblCounterAbove";
+            this.lblCounterAbove.Size = new System.Drawing.Size(31, 33);
+            this.lblCounterAbove.TabIndex = 0;
+            this.lblCounterAbove.Text = "0";
             // 
-            // btnDisableBelow
+            // btnDisableAbove
             // 
-            this.btnDisableBelow.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDisableBelow.Location = new System.Drawing.Point(242, 9);
-            this.btnDisableBelow.Name = "btnDisableBelow";
-            this.btnDisableBelow.Size = new System.Drawing.Size(75, 33);
-            this.btnDisableBelow.TabIndex = 1;
-            this.btnDisableBelow.Text = "Disable";
-            this.btnDisableBelow.UseVisualStyleBackColor = true;
-            this.btnDisableBelow.Click += new System.EventHandler(this.btnDisableBelow_Click);
+            this.btnDisableAbove.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDisableAbove.Location = new System.Drawing.Point(259, 12);
+            this.btnDisableAbove.Name = "btnDisableAbove";
+            this.btnDisableAbove.Size = new System.Drawing.Size(75, 33);
+            this.btnDisableAbove.TabIndex = 1;
+            this.btnDisableAbove.Text = "Disable";
+            this.btnDisableAbove.UseVisualStyleBackColor = true;
+            this.btnDisableAbove.Click += new System.EventHandler(this.btnDisableAbove_Click);
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::PatientMonitor.Properties.Resources.Warning;
-            this.pictureBox1.Location = new System.Drawing.Point(13, 9);
+            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(33, 33);
+            this.pictureBox1.Size = new System.Drawing.Size(31, 30);
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
             // 
             // notifyIcon1
             // 
-            this.notifyIcon1.BalloonTipText = "Patient Is Below Thresholds!";
+            this.notifyIcon1.BalloonTipText = "Patient Is Above Thresholds!";
             this.notifyIcon1.BalloonTipTitle = "Warning!";
             this.notifyIcon1.Text = "notifyIcon1";
             this.notifyIcon1.Visible = true;
             // 
-            // AlarmBelow
+            // AlarmAbove
             // 
-            this.AcceptButton = this.btnDisableBelow;
+            this.AcceptButton = this.btnDisableAbove;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(329, 51);
+            this.ClientSize = new System.Drawing.Size(346, 51);
             this.ControlBox = false;
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.btnDisableBelow);
-            this.Controls.Add(this.lblCounterBelow);
+            this.Controls.Add(this.btnDisableAbove);
+            this.Controls.Add(this.lblCounterAbove);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "AlarmBelow";
-            this.Text = "Patient Below Limit!";
+            this.Name = "AlarmAbove";
+            this.Text = "Patient Above Limit!";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -103,10 +104,11 @@
 
         #endregion
 
-        private System.Windows.Forms.Timer tmrBelowLimit;
-        private System.Windows.Forms.Label lblCounterBelow;
-        private System.Windows.Forms.Button btnDisableBelow;
+        private System.Windows.Forms.Timer tmrAboveLimit;
+        private System.Windows.Forms.Label lblCounterAbove;
+        private System.Windows.Forms.Button btnDisableAbove;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PageSetupDialog pageSetupDialog1;
         private System.Windows.Forms.NotifyIcon notifyIcon1;
     }
 }

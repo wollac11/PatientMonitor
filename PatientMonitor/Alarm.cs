@@ -11,44 +11,50 @@ using System.Windows.Forms;
 
 namespace PatientMonitor
 {
-    public partial class AlarmBelow : Form
+    public partial class Alarm : Form
     {
-        public AlarmBelow()
+        public Alarm()
         {
             InitializeComponent();
+            // Set window title
+            this.Text = "Patient in bed " + Monitor.curBed + " needs attention!";
         }
 
         //add soundplayer function which will play a resource file
         SoundPlayer MutableAlarm = new SoundPlayer(ResourceAlarm.MutableAlarm);
 
         //add int value to work as a visable counter
-        int i = 0;
-        private void tmrBelowLimit_Tick(object sender, EventArgs e)
+        int i;
+        private void tmrAboveLimit_Tick(object sender, EventArgs e)
         {
-            if (Application.OpenForms.OfType<AlarmBelow>().Any())
+            if (Application.OpenForms.OfType<Alarm>().Any())
             {
                 //play alarm sound when timer starts and command it to loop
                 MutableAlarm.PlayLooping();
                 i++;
+                
                 //convert int value to appear as text
-                lblCounterBelow.Text = i.ToString() + " Seconds";
-            }
+                lblCounterAbove.Text = i.ToString() + " Seconds";
+             }
         }
 
-        private void btnDisableBelow_Click(object sender, EventArgs e)
+        private void btnDisableAbove_Click(object sender, EventArgs e)
         {
+
             //call timer recorder method to record the time taken
             TimerRecorder timesUp = new TimerRecorder();
 
             //call timer recorder class
-            timesUp.csvWriter(lblCounterBelow.Text);
+            timesUp.csvWriter(lblCounterAbove.Text);
 
             //close the form once pressed
             this.Close();
 
             //stop the timer and alarm sound when user clicks disable
-            tmrBelowLimit.Stop();
+            tmrAboveLimit.Stop();
             MutableAlarm.Stop();
+
+
         }
     }
 }

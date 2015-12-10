@@ -52,17 +52,11 @@
     <Compile Include="About.Designer.cs">
       <DependentUpon>About.cs</DependentUpon>
     </Compile>
-    <Compile Include="AlarmAbove.cs">
+    <Compile Include="Alarm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AlarmAbove.Designer.cs">
-      <DependentUpon>AlarmAbove.cs</DependentUpon>
-    </Compile>
-    <Compile Include="AlarmBelow.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AlarmBelow.Designer.cs">
-      <DependentUpon>AlarmBelow.cs</DependentUpon>
+    <Compile Include="Alarm.Designer.cs">
+      <DependentUpon>Alarm.cs</DependentUpon>
     </Compile>
     <Compile Include="Menu.cs">
       <SubType>Form</SubType>
@@ -100,11 +94,8 @@
     <EmbeddedResource Include="About.resx">
       <DependentUpon>About.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AlarmAbove.resx">
-      <DependentUpon>AlarmAbove.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AlarmBelow.resx">
-      <DependentUpon>AlarmBelow.cs</DependentUpon>
+    <EmbeddedResource Include="Alarm.resx">
+      <DependentUpon>Alarm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Menu.resx">
       <DependentUpon>Menu.cs</DependentUpon>
