@@ -10,6 +10,7 @@ namespace PatientMonitor
     {
         static Random r = new Random();
 
+        // Vars for retaining previous readings
         private static int prevDia = 0;
         private static int prevSys = 0;
         private static int prevHR = 0;
@@ -41,31 +42,15 @@ namespace PatientMonitor
             get { return _breathRate(); }
         }
 
-        private static double gen_sensor_data(Random rand, int min, int max, bool dec)
-        {
-            int integralPart = rand.Next(min, max);
-
-            if (dec == true)
-            {
-                int decimalPart = rand.Next(0, 9);
-                return double.Parse(integralPart.ToString() + "." + decimalPart.ToString());
-            }
-            else
-            {
-                return integralPart;
-            }
-
-        }
-
         private static int _diaPressure() 
         {
             if (prevDia == 0)
             {
-                prevDia = Convert.ToInt16(gen_sensor_data(r, 50, 80, false));
+                prevDia = r.Next(50, 80);
             }
             else
             {
-                prevDia = Convert.ToInt16(gen_sensor_data(r, prevDia - 2, prevDia + 3, false));
+                prevDia = r.Next(prevDia - 2, prevDia + 3);
             }
 
             return prevDia;
@@ -75,11 +60,11 @@ namespace PatientMonitor
         {
             if (prevSys == 0)
             {
-                prevSys = Convert.ToInt16(gen_sensor_data(r, 80, 130, false));
+                prevSys = r.Next(80, 130);
             }
             else
             {
-                prevSys = Convert.ToInt16(gen_sensor_data(r, prevSys - 2, prevSys + 3, false));
+                prevSys = r.Next(prevSys - 2, prevSys + 3);
             }
 
             return prevSys;
@@ -89,20 +74,17 @@ namespace PatientMonitor
         {
             if (prevHR == 0)
             {
-                prevHR = Convert.ToInt16(gen_sensor_data(r, 70, 85, false));
+                prevHR = r.Next(70, 85);
             }
             else
             {
-                int rand = Convert.ToInt16(gen_sensor_data(r, 0, 2, false));
-
+                int rand = r.Next(0, 2);
                 switch (rand)
                 {
                     case 0:
-                        prevHR = prevHR + Convert.ToInt16(gen_sensor_data(r, 0, 2, false));
-                        break;
+                        prevHR = prevHR + r.Next(0, 2); break;
                     case 1:
-                        prevHR = prevHR - Convert.ToInt16(gen_sensor_data(r, 0, 2, false));
-                        break;
+                        prevHR = prevHR - r.Next(0, 2);  break;
                 }
             }
 
@@ -113,20 +95,18 @@ namespace PatientMonitor
         {
             if (prevBr == 0)
             {
-                prevBr = Convert.ToInt16(gen_sensor_data(r, 14, 20, false));
+                prevBr = r.Next(14, 20);
             }
             else
             {
-                int rand = Convert.ToInt16(gen_sensor_data(r, 0, 2, false));
+                int rand = r.Next(0, 2);
+                double dec = r.Next(0, 10);
                 switch (rand)
                 {
                     case 0:
-                        prevBr = Convert.ToInt16(Math.Round(prevBr + (gen_sensor_data(r, 0, 10, false) / 10)));
-                        break;
-
+                        prevBr = Convert.ToInt16(Math.Round(prevBr + (dec / 10))); break;
                     case 1:
-                        prevBr = Convert.ToInt16(Math.Round(prevBr - (gen_sensor_data(r, 0, 10, false) / 10)));
-                        break;
+                        prevBr = Convert.ToInt16(Math.Round(prevBr - (dec / 10))); break;
                 }
             }
 
@@ -135,27 +115,26 @@ namespace PatientMonitor
 
         private static double _bodyTemp()
         {
+            int integralPart = 0;
+            int decimalPart = r.Next(0, 10);
+
             if (prevTemp == 0)
             {
-                prevTemp = gen_sensor_data(r, 35, 39, true);
+                integralPart = r.Next(35, 39);
             }
             else
             {
-                int rand = Convert.ToInt16(gen_sensor_data(r, 0, 2, false));
-                int integralPart = 0;
-                int decimalPart = Convert.ToInt16(gen_sensor_data(r, 0, 9, false));
+                int rand = r.Next(0, 2);
                 switch (rand)
                 {
                     case 0:
-                        integralPart = Convert.ToInt16(Math.Truncate(prevTemp) + (gen_sensor_data(r, 0, 2, false)));
-                        break;
+                        integralPart = Convert.ToInt16(Math.Truncate(prevTemp) + (r.Next(0, 2))); break;
                     case 1:
-                        integralPart = Convert.ToInt16(Math.Truncate(prevTemp) - (gen_sensor_data(r, 0, 2, false)));
-                        break;
+                        integralPart = Convert.ToInt16(Math.Truncate(prevTemp) - (r.Next(0, 2))); break;
                 }
-                prevTemp = double.Parse(integralPart.ToString() + "." + decimalPart.ToString()); 
             }
 
+            prevTemp = double.Parse(integralPart.ToString() + "." + decimalPart.ToString());
             return prevTemp;
         }
 
