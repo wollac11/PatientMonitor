@@ -164,7 +164,7 @@ namespace PatientMonitor
             if (_breathEnable == true)
             {
                 // Check breathing rate
-                int curBR = int.Parse(heartRate.Text);
+                int curBR = int.Parse(breathingRate.Text);
                 // Place alarm if past min or max threshold
                 if (curBR < minThreshold[1] || curBR > maxThreshold[1]) placeAlarm();
             }
@@ -172,12 +172,12 @@ namespace PatientMonitor
             if (_pressureEnable == true)
             {
                 // Check systolic pressure
-                int curSys = int.Parse(heartRate.Text);
+                int curSys = int.Parse(bloodPressure.Text);
                 // Place alarm if past min or max threshold
                 if (curSys< minThreshold[2] || curSys > maxThreshold[2]) placeAlarm();
 
                 // Check diastolic pressure
-                int curDia = int.Parse(heartRate.Text);
+                int curDia = int.Parse(lblDiaPressure.Text);
                 // Place alarm if past min or max threshold
                 if (curDia < minThreshold[3] || curDia > maxThreshold[3]) placeAlarm();
             }
@@ -185,7 +185,7 @@ namespace PatientMonitor
             if (_tempEnable == true)
             {
                 // Check temperature
-                double curTemp = double.Parse(heartRate.Text);
+                double curTemp = (double.Parse(temperature.Text));
                 // Place alarm if past min or max threshold
                 if (curTemp < minThreshold[4] || curTemp > maxThreshold[4]) placeAlarm();
             }
