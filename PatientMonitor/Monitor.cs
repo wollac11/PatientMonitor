@@ -100,13 +100,17 @@ namespace PatientMonitor
             {
                 MessageBox.Show("Error: You must select a bed first.", "No bed selected!");
             }
-
-           
         }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            this.Close();
+            // Confirm that user really wants to close the monitor
+            DialogResult dialogResult = MessageBox.Show("Patient monitoring will be stopped. Are you sure?", "Close Monitor", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                // Close the monitor
+                this.Close();
+            }
         }
 
         private void btnOptions_Click(object sender, EventArgs e)
