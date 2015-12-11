@@ -30,13 +30,15 @@ namespace PatientMonitor
 
         private void btnManage_Click(object sender, EventArgs e)
         {
-            Management m = new Management();
+            Login m = new Login();
+            m.management = true;
             m.Show();
         }
 
         private void btnMonitor_Click(object sender, EventArgs e)
         {
-            Monitor m = new Monitor();
+            Login m = new Login();
+            m.management = false;
             m.Show();
         }
 
