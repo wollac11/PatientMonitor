@@ -82,6 +82,11 @@
     <Compile Include="Monitor.Designer.cs">
       <DependentUpon>Monitor.cs</DependentUpon>
     </Compile>
+    <Compile Include="MonitorDB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MonitorDB.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Options.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -132,6 +137,17 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ResourceAlarm.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="MonitorDB.xsc">
+      <DependentUpon>MonitorDB.xsd</DependentUpon>
+    </None>
+    <None Include="MonitorDB.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>MonitorDB.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="MonitorDB.xss">
+      <DependentUpon>MonitorDB.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -153,6 +169,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\thumb_Information.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="MonitorDB.mdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
