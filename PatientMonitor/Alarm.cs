@@ -17,7 +17,7 @@ namespace PatientMonitor
         {
             InitializeComponent();
             // Set window title
-            this.Text = "Patient in bed " + Monitor.curBed + " needs attention!";
+            this.Text = "Patient in bed " + (Monitor.curBed + 1) + " needs attention!";
         }
 
         //add soundplayer function which will play a resource file
@@ -53,7 +53,6 @@ namespace PatientMonitor
             //stop the timer and alarm sound when user clicks disable
             tmrAboveLimit.Stop();
             MutableAlarm.Stop();
-
 
         }
     }
