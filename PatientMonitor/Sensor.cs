@@ -129,17 +129,19 @@ namespace PatientMonitor
 
             if (prevTemp == 0)
             {
-                integralPart = r.Next(35, 39);
+                integralPart = r.Next(35, 38);
             }
             else
             {
-                int rand = r.Next(0, 2);
+                int rand = r.Next(0, 3);
                 switch (rand)
                 {
                     case 0:
                         integralPart = Convert.ToInt16(Math.Truncate(prevTemp) + (r.Next(0, 2))); break;
                     case 1:
                         integralPart = Convert.ToInt16(Math.Truncate(prevTemp) - (r.Next(0, 2))); break;
+                    case 2:
+                        integralPart = Convert.ToInt16(Math.Truncate(prevTemp)); break;
                 }
             }
 
