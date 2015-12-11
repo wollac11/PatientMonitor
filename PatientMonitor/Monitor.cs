@@ -17,6 +17,7 @@ namespace PatientMonitor
         {
             InitializeComponent();
             applyInitialThresholds();
+            lblNurseName.Text = _curNurse;
         }
 
         private void tbrHRMin_OnValueChanged(object sender, EventArgs e)
@@ -235,6 +236,13 @@ namespace PatientMonitor
         public static int curBed
         {
             get { return _curBed; }
+        }
+
+        static string _curNurse;
+        public static string curNurse
+        {
+            get { return _curNurse; }
+            set { _curNurse = value; }
         }
 
         private void updateSelection()

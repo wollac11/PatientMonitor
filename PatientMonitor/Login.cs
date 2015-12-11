@@ -17,6 +17,7 @@ namespace PatientMonitor
             InitializeComponent();
         }
 
+        // Bool to set desired form
         public bool management;
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -45,6 +46,7 @@ namespace PatientMonitor
             }
             else
             {
+                Monitor.curNurse = txtUser.Text;
                 Monitor m = new Monitor();
                 m.Show();
             }
@@ -55,7 +57,12 @@ namespace PatientMonitor
 
         private void loginFail()
         {
+            // Alert of failure
             MessageBox.Show("Sorry, username/password combination is incorrect! Please try again.", "Login Failure");
+
+            // Clear input
+            txtUser.Text = "";
+            txtPass.Text = "";
         }
     }
 }

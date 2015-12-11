@@ -82,6 +82,8 @@
             this.tipThresholds = new System.Windows.Forms.ToolTip(this.components);
             this.btnOptions = new System.Windows.Forms.Button();
             this.timerRefresh = new System.Windows.Forms.Timer(this.components);
+            this.lblNurse = new System.Windows.Forms.Label();
+            this.lblNurseName = new System.Windows.Forms.Label();
             this.gbxThresholds.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -666,11 +668,32 @@
             this.timerRefresh.Interval = 1000;
             this.timerRefresh.Tick += new System.EventHandler(this.timerRefresh_Tick);
             // 
+            // lblNurse
+            // 
+            this.lblNurse.AutoSize = true;
+            this.lblNurse.Location = new System.Drawing.Point(334, 20);
+            this.lblNurse.Name = "lblNurse";
+            this.lblNurse.Size = new System.Drawing.Size(75, 13);
+            this.lblNurse.TabIndex = 9;
+            this.lblNurse.Text = "Current Nurse:";
+            // 
+            // lblNurseName
+            // 
+            this.lblNurseName.AutoSize = true;
+            this.lblNurseName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNurseName.Location = new System.Drawing.Point(412, 20);
+            this.lblNurseName.Name = "lblNurseName";
+            this.lblNurseName.Size = new System.Drawing.Size(42, 13);
+            this.lblNurseName.TabIndex = 10;
+            this.lblNurseName.Text = "NAME";
+            // 
             // Monitor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(480, 503);
+            this.Controls.Add(this.lblNurseName);
+            this.Controls.Add(this.lblNurse);
             this.Controls.Add(this.btnOptions);
             this.Controls.Add(this.lblBed);
             this.Controls.Add(this.gbxMonitor);
@@ -760,5 +783,7 @@
         private System.Windows.Forms.Label lblDiaPressure;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Timer timerRefresh;
+        private System.Windows.Forms.Label lblNurse;
+        private System.Windows.Forms.Label lblNurseName;
     }
 }
