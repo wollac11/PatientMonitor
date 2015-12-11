@@ -18,10 +18,17 @@ namespace PatientMonitor
             InitializeComponent();
             // Set window title
             this.Text = "Patient in bed " + (Monitor.curBed + 1) + " needs attention!";
+
+            // Play alarm sound and command it to loop
+            MutableAlarm.PlayLooping();
+            muted = false;
         }
 
         //add soundplayer function which will play a resource file
         SoundPlayer MutableAlarm = new SoundPlayer(ResourceAlarm.MutableAlarm);
+
+        // Declare bool for muted state
+        bool muted;
 
         //add int value to work as a visable counter
         int i;
@@ -29,10 +36,8 @@ namespace PatientMonitor
         {
             if (Application.OpenForms.OfType<Alarm>().Any())
             {
-                //play alarm sound when timer starts and command it to loop
-                MutableAlarm.PlayLooping();
+                // Increment counter
                 i++;
-                
                 //convert int value to appear as text
                 lblCounterAbove.Text = i.ToString() + " Seconds";
              }
@@ -54,6 +59,28 @@ namespace PatientMonitor
             tmrAboveLimit.Stop();
             MutableAlarm.Stop();
 
+        }
+
+        private void btnMute_Click(object sender, EventArgs e)
+        {
+            if (muted == false)
+            {
+                // Stop alarm sound
+                MutableAlarm.Stop();
+                muted = true;
+
+                // Update button label
+                btnMute.Text = "Unmute Alarm";
+            }
+            else
+            {
+                // Play alarm sound and command it to loop
+                MutableAlarm.PlayLooping();
+                muted = false;
+
+                // Update button label
+                btnMute.Text = "Mute Alarm";
+            }
         }
     }
 }
