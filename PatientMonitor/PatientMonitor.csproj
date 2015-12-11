@@ -58,6 +58,12 @@
     <Compile Include="Alarm.Designer.cs">
       <DependentUpon>Alarm.cs</DependentUpon>
     </Compile>
+    <Compile Include="CentralStation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CentralStation.Designer.cs">
+      <DependentUpon>CentralStation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,6 +113,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Alarm.resx">
       <DependentUpon>Alarm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CentralStation.resx">
+      <DependentUpon>CentralStation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>

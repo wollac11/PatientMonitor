@@ -291,5 +291,11 @@ namespace PatientMonitor
             alarmThreshold[bed][4, 0] = tbrTempMin.Value;
             alarmThreshold[bed][4, 1] = tbrTempMax.Value;
         }
+
+        private void btnStation_Click(object sender, EventArgs e)
+        {
+            CentralStation m = new CentralStation();
+            m.Show();
+        }
     }
 }

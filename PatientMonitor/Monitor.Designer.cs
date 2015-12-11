@@ -84,6 +84,7 @@
             this.timerRefresh = new System.Windows.Forms.Timer(this.components);
             this.lblNurse = new System.Windows.Forms.Label();
             this.lblNurseName = new System.Windows.Forms.Label();
+            this.btnStation = new System.Windows.Forms.Button();
             this.gbxThresholds.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -687,11 +688,22 @@
             this.lblNurseName.TabIndex = 10;
             this.lblNurseName.Text = "NAME";
             // 
+            // btnStation
+            // 
+            this.btnStation.Location = new System.Drawing.Point(193, 10);
+            this.btnStation.Name = "btnStation";
+            this.btnStation.Size = new System.Drawing.Size(103, 23);
+            this.btnStation.TabIndex = 11;
+            this.btnStation.Text = "Central Station";
+            this.btnStation.UseVisualStyleBackColor = true;
+            this.btnStation.Click += new System.EventHandler(this.btnStation_Click);
+            // 
             // Monitor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(480, 503);
+            this.Controls.Add(this.btnStation);
             this.Controls.Add(this.lblNurseName);
             this.Controls.Add(this.lblNurse);
             this.Controls.Add(this.btnOptions);
@@ -785,5 +797,6 @@
         private System.Windows.Forms.Timer timerRefresh;
         private System.Windows.Forms.Label lblNurse;
         private System.Windows.Forms.Label lblNurseName;
+        private System.Windows.Forms.Button btnStation;
     }
 }
