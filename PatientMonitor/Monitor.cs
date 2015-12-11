@@ -71,10 +71,8 @@ namespace PatientMonitor
 
         // Intialise jagged array of multidimensional arrays holding min and max alarm
         // thresholds for each of the patient vitals
-        int[][,] alarmThreshold = new int[10][,]
+        int[][,] alarmThreshold = new int[8][,]
         {
-            new int[5,2],
-            new int[5,2],
             new int[5,2],
             new int[5,2],
             new int[5,2],
@@ -263,7 +261,7 @@ namespace PatientMonitor
 
         private void applyInitialThresholds()
         {
-            for (int i = 0; i <= 9; i++)
+            for (int i = 0; i <= 7; i++)
             {
                 setThresholds(i);
             }

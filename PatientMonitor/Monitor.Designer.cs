@@ -205,9 +205,7 @@
             "Bed 5",
             "Bed 6",
             "Bed 7",
-            "Bed 8",
-            "Bed 9",
-            "Bed 10"});
+            "Bed 8"});
             this.cbxBed.Location = new System.Drawing.Point(52, 12);
             this.cbxBed.MaxDropDownItems = 10;
             this.cbxBed.Name = "cbxBed";
