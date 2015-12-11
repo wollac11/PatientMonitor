@@ -19,8 +19,8 @@ namespace PatientMonitor
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            // Confirm if user really wants to exit the application
-            DialogResult dialogResult = MessageBox.Show("Are you sure you wish to exit?", "Are you sure?", MessageBoxButtons.YesNo);
+            // Confirm that user really wants to exit the application
+            DialogResult dialogResult = MessageBox.Show("Are you sure you wish to exit?", "Exit Application", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
                 // Exit the application
