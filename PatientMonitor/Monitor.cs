@@ -16,6 +16,7 @@ namespace PatientMonitor
         public Monitor()
         {
             InitializeComponent();
+            applyInitialThresholds();
         }
 
         private void tbrHRMin_OnValueChanged(object sender, EventArgs e)
@@ -67,8 +68,20 @@ namespace PatientMonitor
             lblDiaPressureMax.Text = tbrDiaPressureMax.Value.ToString();
         }
 
-        int[] minThreshold = new int[5];
-        int[] maxThreshold = new int[5];
+        int[][,] alarmThreshold = new int[10][,]
+        {
+            new int[5,2],
+            new int[5,2],
+            new int[5,2],
+            new int[5,2],
+            new int[5,2],
+            new int[5,2],
+            new int[5,2],
+            new int[5,2],
+            new int[5,2],
+            new int[5,2],
+
+        };
 
         /// <summary>
         /// Applies min and max alarm thresholds for current patient vitals
@@ -80,25 +93,8 @@ namespace PatientMonitor
             // Apply threshold values only if a bed is selected 
             if (cbxBed.SelectedIndex > -1)
             {
-                // Set heart rate thresholds
-                minThreshold[0] = tbrHRMin.Value;
-                maxThreshold[0] = tbrHRMax.Value;
-
-                // Set breathing rate thresholds
-                minThreshold[1] = tbrBRMin.Value;
-                maxThreshold[1] = tbrBRMax.Value;
-
-                // Set Systolic pressure thresholds
-                minThreshold[2] = tbrSysPressureMin.Value;
-                maxThreshold[2] = tbrSysPressureMax.Value;
-
-                // Set Diastolic pressure thresholds
-                minThreshold[3] = tbrDiaPressureMin.Value;
-                maxThreshold[3] = tbrDiaPressureMax.Value;
-
-                // Set temperature thresholds
-                minThreshold[4] = tbrTempMin.Value;
-                maxThreshold[4] = tbrTempMax.Value;
+                // Set alarm thresholds for currently selected bed
+                setThresholds(_curBed);
             }
             else
             {
@@ -158,7 +154,7 @@ namespace PatientMonitor
                 // Check heart rate
                 int curHR = int.Parse(heartRate.Text);
                 // Place alarm if past min or max threshold
-                if (curHR < minThreshold[0] || curHR > maxThreshold[0]) placeAlarm();
+                if (curHR < alarmThreshold[_curBed][0,0] || curHR > alarmThreshold[_curBed][0, 1]) placeAlarm();
             }
 
             if (_breathEnable == true)
@@ -166,7 +162,8 @@ namespace PatientMonitor
                 // Check breathing rate
                 int curBR = int.Parse(breathingRate.Text);
                 // Place alarm if past min or max threshold
-                if (curBR < minThreshold[1] || curBR > maxThreshold[1]) placeAlarm();
+                if (curBR < alarmThreshold[_curBed][1, 0] || curBR > alarmThreshold[_curBed][1, 1]) placeAlarm();
+
             }
 
             if (_pressureEnable == true)
@@ -174,12 +171,14 @@ namespace PatientMonitor
                 // Check systolic pressure
                 int curSys = int.Parse(bloodPressure.Text);
                 // Place alarm if past min or max threshold
-                if (curSys< minThreshold[2] || curSys > maxThreshold[2]) placeAlarm();
+                if (curSys < alarmThreshold[_curBed][2, 0] || curSys > alarmThreshold[_curBed][2, 1]) placeAlarm();
+
 
                 // Check diastolic pressure
                 int curDia = int.Parse(lblDiaPressure.Text);
                 // Place alarm if past min or max threshold
-                if (curDia < minThreshold[3] || curDia > maxThreshold[3]) placeAlarm();
+                if (curDia < alarmThreshold[_curBed][3, 0] || curDia > alarmThreshold[_curBed][3, 1]) placeAlarm();
+
             }
 
             if (_tempEnable == true)
@@ -187,7 +186,8 @@ namespace PatientMonitor
                 // Check temperature
                 double curTemp = double.Parse(temperature.Text);
                 // Place alarm if past min or max threshold
-                if (curTemp < minThreshold[4] || curTemp > maxThreshold[4]) placeAlarm();
+                if (curTemp < alarmThreshold[_curBed][4, 0] || curTemp > alarmThreshold[_curBed][4, 1]) placeAlarm();
+
             }
         }
 
@@ -230,26 +230,57 @@ namespace PatientMonitor
             set { _tempEnable = value; }
         }
 
-        static int _curbed;
+        static int _curBed;
         public static int curBed
         {
-            get { return _curbed; }
+            get { return _curBed; }
         }
 
         private void updateSelection()
         {
-            _curbed = cbxBed.SelectedIndex + 1;
+            _curBed = cbxBed.SelectedIndex;
+            Sensor.initialize();
         }
 
         private void cbxBed_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cbxBed.SelectedIndex > -1)
             {
-                Sensor.initialize();
                 timerRefresh.Enabled = true;
                 updateSelection();
             }
             else timerRefresh.Enabled = false;
+        }
+
+        private void applyInitialThresholds()
+        {
+            for (int i = 0; i <= 9; i++)
+            {
+                setThresholds(i);
+            }
+        }
+
+        private void setThresholds(int bed)
+        {
+            // Set heart rate thresholds
+            alarmThreshold[bed][0, 0] = tbrHRMin.Value;
+            alarmThreshold[bed][0, 1] = tbrHRMax.Value;
+
+            // Set breathing rate thresholds
+            alarmThreshold[bed][1, 0] = tbrBRMin.Value;
+            alarmThreshold[bed][1, 1] = tbrBRMax.Value;
+
+            // Set Systolic pressure thresholds
+            alarmThreshold[bed][2, 0] = tbrSysPressureMin.Value;
+            alarmThreshold[bed][2, 1] = tbrSysPressureMax.Value;
+
+            // Set Diastolic pressure thresholds
+            alarmThreshold[bed][3, 0] = tbrDiaPressureMin.Value;
+            alarmThreshold[bed][3, 1] = tbrDiaPressureMax.Value;
+
+            // Set temperature thresholds
+            alarmThreshold[bed][4, 0] = tbrTempMin.Value;
+            alarmThreshold[bed][4, 1] = tbrTempMax.Value;
         }
     }
 }

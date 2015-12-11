@@ -203,7 +203,8 @@
             "Bed 6",
             "Bed 7",
             "Bed 8",
-            "Bed 9"});
+            "Bed 9",
+            "Bed 10"});
             this.cbxBed.Location = new System.Drawing.Point(52, 12);
             this.cbxBed.MaxDropDownItems = 10;
             this.cbxBed.Name = "cbxBed";
@@ -528,9 +529,9 @@
             this.lblHRMax.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHRMax.Location = new System.Drawing.Point(115, 32);
             this.lblHRMax.Name = "lblHRMax";
-            this.lblHRMax.Size = new System.Drawing.Size(21, 13);
+            this.lblHRMax.Size = new System.Drawing.Size(28, 13);
             this.lblHRMax.TabIndex = 27;
-            this.lblHRMax.Text = "80";
+            this.lblHRMax.Text = "140";
             // 
             // label20
             // 
@@ -586,7 +587,7 @@
             this.tbrHRMax.Size = new System.Drawing.Size(105, 45);
             this.tbrHRMax.TabIndex = 18;
             this.tbrHRMax.TickFrequency = 10;
-            this.tbrHRMax.Value = 80;
+            this.tbrHRMax.Value = 140;
             this.tbrHRMax.ValueChanged += new System.EventHandler(this.tbrHRMax_OnValueChanged);
             // 
             // tbrBRMax
