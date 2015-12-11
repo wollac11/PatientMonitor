@@ -68,6 +68,8 @@ namespace PatientMonitor
             lblDiaPressureMax.Text = tbrDiaPressureMax.Value.ToString();
         }
 
+        // Intialise jagged array of multidimensional arrays holding min and max alarm
+        // thresholds for each of the patient vitals
         int[][,] alarmThreshold = new int[10][,]
         {
             new int[5,2],
@@ -80,7 +82,6 @@ namespace PatientMonitor
             new int[5,2],
             new int[5,2],
             new int[5,2],
-
         };
 
         /// <summary>
@@ -167,7 +168,6 @@ namespace PatientMonitor
                 int curBR = int.Parse(breathingRate.Text);
                 // Place alarm if past min or max threshold
                 if (curBR < alarmThreshold[_curBed][1, 0] || curBR > alarmThreshold[_curBed][1, 1]) placeAlarm();
-
             }
 
             if (_pressureEnable == true)
@@ -176,13 +176,11 @@ namespace PatientMonitor
                 int curSys = int.Parse(bloodPressure.Text);
                 // Place alarm if past min or max threshold
                 if (curSys < alarmThreshold[_curBed][2, 0] || curSys > alarmThreshold[_curBed][2, 1]) placeAlarm();
-
-
+                
                 // Check diastolic pressure
                 int curDia = int.Parse(lblDiaPressure.Text);
                 // Place alarm if past min or max threshold
                 if (curDia < alarmThreshold[_curBed][3, 0] || curDia > alarmThreshold[_curBed][3, 1]) placeAlarm();
-
             }
 
             if (_tempEnable == true)
@@ -191,7 +189,6 @@ namespace PatientMonitor
                 double curTemp = double.Parse(temperature.Text);
                 // Place alarm if past min or max threshold
                 if (curTemp < alarmThreshold[_curBed][4, 0] || curTemp > alarmThreshold[_curBed][4, 1]) placeAlarm();
-
             }
         }
 

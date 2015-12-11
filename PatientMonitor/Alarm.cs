@@ -45,7 +45,6 @@ namespace PatientMonitor
 
         private void btnDisableAbove_Click(object sender, EventArgs e)
         {
-
             //call timer recorder method to record the time taken
             TimerRecorder timesUp = new TimerRecorder();
 
@@ -58,7 +57,6 @@ namespace PatientMonitor
             //stop the timer and alarm sound when user clicks disable
             tmrAboveLimit.Stop();
             MutableAlarm.Stop();
-
         }
 
         private void btnMute_Click(object sender, EventArgs e)
