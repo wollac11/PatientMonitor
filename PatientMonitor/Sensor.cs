@@ -10,80 +10,55 @@ namespace PatientMonitor
     {
         static Random r = new Random();
 
-        // Vars for retaining previous readings
-        private static int prevDia = 0;
-        private static int prevSys = 0;
-        private static int prevHR = 0;
-        private static int prevBr = 0;
-        private static double prevTemp = 0;
-
-        public static double bodyTemp
-        {
-            get { return _bodyTemp(); }
-        }
-
-        public static int heartRate
-        {
-            get { return _heartRate(); }
-        }
-
-        public static int sysPressure
-        {
-            get { return _sysPressure(); }
-        }
-
-        public static int diaPressure
-        {
-            get { return _diaPressure(); }
-        }
-
-        public static int breathRate
-        {
-            get { return _breathRate(); }
-        }
+        // Arrays for retaining previous readings
+        static int[] prevDia = new int[8];
+        static int[] prevSys = new int[8];
+        static int[] prevHR = new int[8];
+        static int[] prevBr = new int[8];
+        static double[] prevTemp = new double[8];
 
         public static void initialize()
         {
-            prevDia = 0;
-            prevSys = 0;
-            prevHR = 0;
-            prevTemp = 0;
-            prevBr = 0;
+            //prevDia = 0;
+            //prevSys = 0;
+            //prevHR = 0;
+            //prevTemp = 0;
+            //prevBr = 0;
         }
 
-        private static int _diaPressure() 
+        public static int getDiaPressure(int i) 
         {
-            if (prevDia == 0)
+            if (prevDia[i] == 0)
             {
-                prevDia = r.Next(50, 80);
+                prevDia[i] = r.Next(50, 80);
             }
             else
             {
-                prevDia = r.Next(prevDia - 2, prevDia + 3);
+                prevDia[i] = r.Next(prevDia[i] - 2, prevDia[i] + 3);
             }
 
-            return prevDia;
+            return prevDia[i];
         }
 
-        private static int _sysPressure()
+        public static int getSysPressure(int i)
         {
-            if (prevSys == 0)
+            if (prevSys[i] == 0)
             {
-                prevSys = r.Next(80, 130);
+                prevSys[i] = r.Next(80, 130);
             }
             else
             {
-                prevSys = r.Next(prevSys - 2, prevSys + 3);
+                prevSys[i] = r.Next(prevSys[i] - 2, prevSys[i] + 3);
             }
 
-            return prevSys;
+            return prevSys[i];
         }
 
-        private static int _heartRate()
+        public static int getHeartRate(int i)
         {
-            if (prevHR == 0)
+            if (prevHR[i] == 0)
             {
-                prevHR = r.Next(70, 85);
+                prevHR[i] = r.Next(70, 85);
             }
             else
             {
@@ -91,20 +66,20 @@ namespace PatientMonitor
                 switch (rand)
                 {
                     case 0:
-                        prevHR = prevHR + r.Next(0, 2); break;
+                        prevHR[i] = prevHR[i] + r.Next(0, 2); break;
                     case 1:
-                        prevHR = prevHR - r.Next(0, 2);  break;
+                        prevHR[i] = prevHR[i] - r.Next(0, 2);  break;
                 }
             }
 
-            return prevHR;
+            return prevHR[i];
         }
 
-        private static int _breathRate()
+        public static int getBreathRate(int i)
         {
-            if (prevBr == 0)
+            if (prevBr[i] == 0)
             {
-                prevBr = r.Next(14, 20);
+                prevBr[i] = r.Next(14, 20);
             }
             else
             {
@@ -113,21 +88,21 @@ namespace PatientMonitor
                 switch (rand)
                 {
                     case 0:
-                        prevBr = Convert.ToInt16(Math.Round(prevBr + (dec / 10))); break;
+                        prevBr[i] = Convert.ToInt16(Math.Round(prevBr[i] + (dec / 10))); break;
                     case 1:
-                        prevBr = Convert.ToInt16(Math.Round(prevBr - (dec / 10))); break;
+                        prevBr[i] = Convert.ToInt16(Math.Round(prevBr[i] - (dec / 10))); break;
                 }
             }
 
-            return prevBr;
+            return prevBr[i];
         }
 
-        private static double _bodyTemp()
+        public static double getBodyTemp(int i)
         {
             int integralPart = 0;
             int decimalPart = r.Next(0, 10);
 
-            if (prevTemp == 0)
+            if (prevTemp[i] == 0)
             {
                 integralPart = r.Next(35, 38);
             }
@@ -137,16 +112,16 @@ namespace PatientMonitor
                 switch (rand)
                 {
                     case 0:
-                        integralPart = Convert.ToInt16(Math.Truncate(prevTemp) + (r.Next(0, 2))); break;
+                        integralPart = Convert.ToInt16(Math.Truncate(prevTemp[i]) + (r.Next(0, 2))); break;
                     case 1:
-                        integralPart = Convert.ToInt16(Math.Truncate(prevTemp) - (r.Next(0, 2))); break;
+                        integralPart = Convert.ToInt16(Math.Truncate(prevTemp[i]) - (r.Next(0, 2))); break;
                     case 2:
-                        integralPart = Convert.ToInt16(Math.Truncate(prevTemp)); break;
+                        integralPart = Convert.ToInt16(Math.Truncate(prevTemp[i])); break;
                 }
             }
 
-            prevTemp = double.Parse(integralPart.ToString() + "." + decimalPart.ToString());
-            return prevTemp;
+            prevTemp[i] = double.Parse(integralPart.ToString() + "." + decimalPart.ToString());
+            return prevTemp[i];
         }
 
     }

@@ -121,8 +121,7 @@ namespace PatientMonitor
 
         private void timerRefresh_Tick(object sender, EventArgs e)
         {
-            updateDisplay();
-            checkAlarm();
+            checkVitals();
         }
 
         // Updates display with sensor values for enabled modules
@@ -131,64 +130,81 @@ namespace PatientMonitor
             // Only procceed if a bed is selected 
             if (cbxBed.SelectedIndex > -1)
             {
-                if (_hrEnable == true) heartRate.Text = Sensor.heartRate.ToString();
+                if (_hrEnable == true) heartRate.Text = curStat[0].ToString();
                 else heartRate.Text = "---";
-                if (_tempEnable == true) temperature.Text = Sensor.bodyTemp.ToString();
-                else temperature.Text = "---";
-                if (_breathEnable == true) breathingRate.Text = Sensor.breathRate.ToString();
+                if (_breathEnable == true) breathingRate.Text = curStat[1].ToString();
                 else breathingRate.Text = "---";
                 if (_pressureEnable == true)
                 {
-                    bloodPressure.Text = Sensor.sysPressure.ToString();
-                    lblDiaPressure.Text = Sensor.diaPressure.ToString();
+                    bloodPressure.Text = curStat[2].ToString();
+                    lblDiaPressure.Text = curStat[3].ToString();
                 }
                 else
                 {
                     bloodPressure.Text = "---";
                     lblDiaPressure.Text = "---";
                 }
+                if (_tempEnable == true) temperature.Text = curStat[4].ToString();
+                else temperature.Text = "---";
             }
             
         }
 
-        private void checkAlarm()
+        double[] curStat = new double[5];
+
+        public static bool[] pastThreshold = new bool[8];
+
+        private void checkVitals()
         {
-            if (_hrEnable == true)
+            for (int i = 0; i <= 7; i++)
             {
-                // Check heart rate
-                int curHR = int.Parse(heartRate.Text);
-                // Place alarm if past min or max threshold
-                if (curHR < alarmThreshold[_curBed][0,0] || curHR > alarmThreshold[_curBed][0, 1]) placeAlarm();
+                pastThreshold[i] = false;
+
+                if (_hrEnable == true)
+                {
+                    // Check heart rate
+                    curStat[0] = Sensor.getHeartRate(i);
+                    // Mark as past threshold if current value above or below min/max
+                    if (curStat[0] < alarmThreshold[i][0, 0] || curStat[0] > alarmThreshold[i][0, 1]) pastThreshold[i] = true;
+                }
+
+                if (_breathEnable == true)
+                {
+                    // Check breathing rate
+                    curStat[1] = Sensor.getBreathRate(i);
+                    // Place alarm if past min or max threshold
+                    if (curStat[1] < alarmThreshold[i][1, 0] || curStat[1] > alarmThreshold[i][1, 1]) pastThreshold[i] = true;
+                }
+
+                if (_pressureEnable == true)
+                {
+                    // Check systolic pressure
+                    curStat[2] = Sensor.getSysPressure(i);
+                    // Place alarm if past min or max threshold
+                    if (curStat[2] < alarmThreshold[i][2, 0] || curStat[2] > alarmThreshold[i][2, 1]) pastThreshold[i] = true;
+
+                    // Check diastolic pressure
+                    curStat[3] = Sensor.getDiaPressure(i);
+                    // Place alarm if past min or max threshold
+                    if (curStat[3] < alarmThreshold[i][3, 0] || curStat[3] > alarmThreshold[i][3, 1]) pastThreshold[i] = true;
+                }
+
+                if (_tempEnable == true)
+                {
+                    // Check temperature
+                    curStat[4] = Sensor.getBodyTemp(i);
+                    // Place alarm if past min or max threshold
+                    if (curStat[4] < alarmThreshold[i][4, 0] || curStat[4] > alarmThreshold[i][4, 1]) pastThreshold[i] = true;
+                }
+
+                if (i == _curBed)
+                {
+                    updateDisplay();
+                }
             }
 
-            if (_breathEnable == true)
-            {
-                // Check breathing rate
-                int curBR = int.Parse(breathingRate.Text);
-                // Place alarm if past min or max threshold
-                if (curBR < alarmThreshold[_curBed][1, 0] || curBR > alarmThreshold[_curBed][1, 1]) placeAlarm();
-            }
-
-            if (_pressureEnable == true)
-            {
-                // Check systolic pressure
-                int curSys = int.Parse(bloodPressure.Text);
-                // Place alarm if past min or max threshold
-                if (curSys < alarmThreshold[_curBed][2, 0] || curSys > alarmThreshold[_curBed][2, 1]) placeAlarm();
-                
-                // Check diastolic pressure
-                int curDia = int.Parse(lblDiaPressure.Text);
-                // Place alarm if past min or max threshold
-                if (curDia < alarmThreshold[_curBed][3, 0] || curDia > alarmThreshold[_curBed][3, 1]) placeAlarm();
-            }
-
-            if (_tempEnable == true)
-            {
-                // Check temperature
-                double curTemp = double.Parse(temperature.Text);
-                // Place alarm if past min or max threshold
-                if (curTemp < alarmThreshold[_curBed][4, 0] || curTemp > alarmThreshold[_curBed][4, 1]) placeAlarm();
-            }
+            // If the currently monitored bed has excceed thresholds place an alarm
+            if (pastThreshold[_curBed] == true) placeAlarm();
         }
 
         private void placeAlarm()
