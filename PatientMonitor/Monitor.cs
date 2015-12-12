@@ -116,15 +116,19 @@ namespace PatientMonitor
                     Application.OpenForms.OfType<CentralStation>().FirstOrDefault().Close();
                 }
 
-                    // Close the monitor
-                    this.Close();
+                // Close the monitor
+                this.Close();
             }
         }
 
         private void btnOptions_Click(object sender, EventArgs e)
-        {
-            Options m = new Options();
-            m.Show();
+        {   
+            if (!Application.OpenForms.OfType<Options>().Any())
+            {
+                Options m = new Options();
+                m.Show();
+            }
+            else Application.OpenForms.OfType<Options>().FirstOrDefault().Focus();
         }
 
         private void timerRefresh_Tick(object sender, EventArgs e)
