@@ -36,13 +36,7 @@
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.btnMute = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.monitorDB = new PatientMonitor.MonitorDB();
-            this.responseTimesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.responseTimesTableAdapter = new PatientMonitor.MonitorDBTableAdapters.ResponseTimesTableAdapter();
-            this.tableAdapterManager = new PatientMonitor.MonitorDBTableAdapters.TableAdapterManager();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.monitorDB)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.responseTimesBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // tmrAboveLimit
@@ -99,28 +93,6 @@
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
             // 
-            // monitorDB
-            // 
-            this.monitorDB.DataSetName = "MonitorDB";
-            this.monitorDB.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // responseTimesBindingSource
-            // 
-            this.responseTimesBindingSource.DataMember = "ResponseTimes";
-            this.responseTimesBindingSource.DataSource = this.monitorDB;
-            // 
-            // responseTimesTableAdapter
-            // 
-            this.responseTimesTableAdapter.ClearBeforeFill = true;
-            // 
-            // tableAdapterManager
-            // 
-            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.ResponseTimesTableAdapter = this.responseTimesTableAdapter;
-            this.tableAdapterManager.ShiftsTableAdapter = null;
-            this.tableAdapterManager.StaffTableAdapter = null;
-            this.tableAdapterManager.UpdateOrder = PatientMonitor.MonitorDBTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            // 
             // Alarm
             // 
             this.AcceptButton = this.btnDisableAbove;
@@ -137,10 +109,7 @@
             this.MinimizeBox = false;
             this.Name = "Alarm";
             this.Text = "Patient Needs Attention!";
-            this.Load += new System.EventHandler(this.Alarm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.monitorDB)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.responseTimesBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -155,9 +124,5 @@
         private System.Windows.Forms.PageSetupDialog pageSetupDialog1;
         private System.Windows.Forms.NotifyIcon notifyIcon1;
         private System.Windows.Forms.Button btnMute;
-        private MonitorDB monitorDB;
-        private System.Windows.Forms.BindingSource responseTimesBindingSource;
-        private MonitorDBTableAdapters.ResponseTimesTableAdapter responseTimesTableAdapter;
-        private MonitorDBTableAdapters.TableAdapterManager tableAdapterManager;
     }
 }

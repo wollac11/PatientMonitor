@@ -265,7 +265,7 @@ namespace PatientMonitor
         }
 
         static string _curNurse;
-        public static string curNurse
+        public static string curStaff
         {
             get { return _curNurse; }
             set { _curNurse = value; }
