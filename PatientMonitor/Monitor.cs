@@ -18,7 +18,7 @@ namespace PatientMonitor
             InitializeComponent();
             applyInitialThresholds();
             Sensor.initialize();
-            lblNurseName.Text = _curNurse;
+            lblStaffName.Text = _curStaff;
         }
 
         private void tbrHRMin_OnValueChanged(object sender, EventArgs e)
@@ -264,11 +264,11 @@ namespace PatientMonitor
             get { return _curBed; }
         }
 
-        static string _curNurse;
+        static string _curStaff;
         public static string curStaff
         {
-            get { return _curNurse; }
-            set { _curNurse = value; }
+            get { return _curStaff; }
+            set { _curStaff = value; }
         }
 
         private void updateSelection()

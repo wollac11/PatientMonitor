@@ -82,8 +82,8 @@
             this.tipThresholds = new System.Windows.Forms.ToolTip(this.components);
             this.btnOptions = new System.Windows.Forms.Button();
             this.timerRefresh = new System.Windows.Forms.Timer(this.components);
-            this.lblNurse = new System.Windows.Forms.Label();
-            this.lblNurseName = new System.Windows.Forms.Label();
+            this.lblOnCall = new System.Windows.Forms.Label();
+            this.lblStaffName = new System.Windows.Forms.Label();
             this.btnStation = new System.Windows.Forms.Button();
             this.gbxThresholds.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -667,24 +667,24 @@
             this.timerRefresh.Interval = 1000;
             this.timerRefresh.Tick += new System.EventHandler(this.timerRefresh_Tick);
             // 
-            // lblNurse
+            // lblOnCall
             // 
-            this.lblNurse.AutoSize = true;
-            this.lblNurse.Location = new System.Drawing.Point(334, 20);
-            this.lblNurse.Name = "lblNurse";
-            this.lblNurse.Size = new System.Drawing.Size(75, 13);
-            this.lblNurse.TabIndex = 9;
-            this.lblNurse.Text = "Current Nurse:";
+            this.lblOnCall.AutoSize = true;
+            this.lblOnCall.Location = new System.Drawing.Point(350, 20);
+            this.lblOnCall.Name = "lblOnCall";
+            this.lblOnCall.Size = new System.Drawing.Size(44, 13);
+            this.lblOnCall.TabIndex = 9;
+            this.lblOnCall.Text = "On Call:";
             // 
-            // lblNurseName
+            // lblStaffName
             // 
-            this.lblNurseName.AutoSize = true;
-            this.lblNurseName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNurseName.Location = new System.Drawing.Point(412, 20);
-            this.lblNurseName.Name = "lblNurseName";
-            this.lblNurseName.Size = new System.Drawing.Size(42, 13);
-            this.lblNurseName.TabIndex = 10;
-            this.lblNurseName.Text = "NAME";
+            this.lblStaffName.AutoSize = true;
+            this.lblStaffName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStaffName.Location = new System.Drawing.Point(412, 20);
+            this.lblStaffName.Name = "lblStaffName";
+            this.lblStaffName.Size = new System.Drawing.Size(42, 13);
+            this.lblStaffName.TabIndex = 10;
+            this.lblStaffName.Text = "NAME";
             // 
             // btnStation
             // 
@@ -702,8 +702,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(480, 503);
             this.Controls.Add(this.btnStation);
-            this.Controls.Add(this.lblNurseName);
-            this.Controls.Add(this.lblNurse);
+            this.Controls.Add(this.lblStaffName);
+            this.Controls.Add(this.lblOnCall);
             this.Controls.Add(this.btnOptions);
             this.Controls.Add(this.lblBed);
             this.Controls.Add(this.gbxMonitor);
@@ -793,8 +793,8 @@
         private System.Windows.Forms.Label lblDiaPressure;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Timer timerRefresh;
-        private System.Windows.Forms.Label lblNurse;
-        private System.Windows.Forms.Label lblNurseName;
+        private System.Windows.Forms.Label lblOnCall;
+        private System.Windows.Forms.Label lblStaffName;
         private System.Windows.Forms.Button btnStation;
     }
 }
