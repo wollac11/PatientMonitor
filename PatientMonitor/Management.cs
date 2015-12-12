@@ -27,5 +27,11 @@ namespace PatientMonitor
             this.responseTimesTableAdapter.Fill(this.monitorDB.ResponseTimes);
             this.shiftsTableAdapter1.Fill(this.monitorDB.Shifts);
         }
+
+        private void btnAddStaff_Click(object sender, EventArgs e)
+        {
+            NewUser m = new NewUser();
+            m.Show();
+        }
     }
 }

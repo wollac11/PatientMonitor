@@ -15,11 +15,15 @@
       <RoutePoints>
         <Point>
           <X>242</X>
-          <Y>146</Y>
+          <Y>278</Y>
         </Point>
         <Point>
-          <X>312</X>
-          <Y>146</Y>
+          <X>341</X>
+          <Y>278</Y>
+        </Point>
+        <Point>
+          <X>341</X>
+          <Y>261</Y>
         </Point>
       </RoutePoints>
     </Connector>
