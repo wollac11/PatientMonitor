@@ -55,17 +55,28 @@ namespace PatientMonitor
 
         private void loginSuccess()
         {
-            // Record login
-            shiftsTableAdapter.Insert(DateTime.Now, null, staffTableAdapter.StaffIDQuery(txtUser.Text));
+            // Get staffID
+            int staffID = Convert.ToInt32(staffTableAdapter.StaffIDQuery(txtUser.Text));
             // Launch requested interface
             if (management == true)
             {
-                Management m = new Management();
-                m.Show();
+                // Verify user is a manager
+                if (staffTableAdapter.PositionQuery(staffID) == "Manager")
+                {
+                    // Launch management interface
+                    Management m = new Management();
+                    m.Show();
+                }
+                // Deny user access
+                else MessageBox.Show("Sorry you are not authorised to access the management interface.","Access Denined");
             }
             else
             {
-                Monitor.curNurse = txtUser.Text;
+                // Record login
+                shiftsTableAdapter.Insert(DateTime.Now, null, staffID);
+                // Set attending staff
+                Monitor.curStaff = txtUser.Text;
+                // Launch monitor
                 Monitor m = new Monitor();
                 m.Show();
             }
