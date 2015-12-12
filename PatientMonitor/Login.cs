@@ -72,12 +72,19 @@ namespace PatientMonitor
             }
             else
             {
+                // Get time
+                DateTime time = DateTime.Now;
                 // Record login
-                shiftsTableAdapter.Insert(DateTime.Now, null, staffID);
+                shiftsTableAdapter.Insert(time, null, staffID);
                 // Set attending staff
                 Monitor.curStaff = txtUser.Text;
-                // Launch monitor
+                // Create new monitor
                 Monitor m = new Monitor();
+                // Set monitor attending staff shift details
+                m.startTime = time;
+                m.staffID = staffID;
+                m.shiftID = Convert.ToInt32(shiftsTableAdapter.LatestShiftID());
+                // Launch monitor
                 m.Show();
             }
 

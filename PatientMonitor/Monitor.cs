@@ -21,6 +21,9 @@ namespace PatientMonitor
             lblStaffName.Text = _curStaff;
         }
 
+        // Instantiate  Shifts table adapter
+        MonitorDBTableAdapters.ShiftsTableAdapter shiftsTableAdapter = new MonitorDBTableAdapters.ShiftsTableAdapter();
+
         private void tbrHRMin_OnValueChanged(object sender, EventArgs e)
         {
             lblHRMin.Text = tbrHRMin.Value.ToString();
@@ -115,6 +118,9 @@ namespace PatientMonitor
                     // Close central station
                     Application.OpenForms.OfType<CentralStation>().FirstOrDefault().Close();
                 }
+
+                // Save shift end time
+                shiftsTableAdapter.Update(startTime, DateTime.Now, staffID, shiftID, startTime, null, staffID);
 
                 // Close the monitor
                 this.Close();
@@ -270,6 +276,10 @@ namespace PatientMonitor
             get { return _curStaff; }
             set { _curStaff = value; }
         }
+
+        public DateTime startTime;
+        public int staffID;
+        public int shiftID;
 
         private void updateSelection()
         {

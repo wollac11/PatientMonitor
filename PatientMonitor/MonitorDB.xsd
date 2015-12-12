@@ -132,7 +132,18 @@
               <Mapping SourceColumn="EndTime" DataSetColumn="EndTime" />
               <Mapping SourceColumn="StaffID" DataSetColumn="StaffID" />
             </Mappings>
-            <Sources />
+            <Sources>
+              <DbSource ConnectionRef="MonitorDBConnectionString (Settings)" DbObjectName="Shifts" DbObjectType="Table" GenerateShortCommands="true" GeneratorSourceName="LatestShiftID" Modifier="Public" Name="LatestShiftID" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="LatestShiftID">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        ID
+FROM            Shifts
+ORDER BY ID DESC</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </Sources>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="StaffTableAdapter" GeneratorDataComponentClassName="StaffTableAdapter" Name="Staff" UserDataComponentName="StaffTableAdapter">
             <MainSource>
