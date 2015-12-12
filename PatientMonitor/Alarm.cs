@@ -29,15 +29,15 @@ namespace PatientMonitor
         bool muted;
 
         //add int value to work as a visable counter
-        int i;
+        int count;
         private void tmrAboveLimit_Tick(object sender, EventArgs e)
         {
             if (Application.OpenForms.OfType<Alarm>().Any())
             {
                 // Increment counter
-                i++;
+                count++;
                 //convert int value to appear as text
-                lblCounterAbove.Text = i.ToString() + " Seconds";
+                lblCounterAbove.Text = count.ToString() + " Seconds";
              }
         }
 
@@ -53,7 +53,7 @@ namespace PatientMonitor
             timesUp.csvWriter(lblCounterAbove.Text);
 
             // Write response time to database
-            responseTableAdapter.Insert(Monitor.curBed, 3, DateTime.Now, DateTime.Now);
+            responseTableAdapter.Insert(Monitor.curBed, 3, DateTime.Now, count);
 
             //close the form once pressed
             this.Close();

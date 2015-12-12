@@ -373,6 +373,8 @@ namespace PatientMonitor {
             
             private global::System.Data.DataColumn columnRespondTime;
             
+            private global::System.Data.DataColumn columnRespondTime1;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public ResponseTimesDataTable() {
@@ -448,6 +450,14 @@ namespace PatientMonitor {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn RespondTime1Column {
+                get {
+                    return this.columnRespondTime1;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -483,14 +493,15 @@ namespace PatientMonitor {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ResponseTimesRow AddResponseTimesRow(int Bed, StaffRow parentStaffRowByStaffResponseTimes, System.DateTime AlarmTime, System.DateTime RespondTime) {
+            public ResponseTimesRow AddResponseTimesRow(int Bed, StaffRow parentStaffRowByStaffResponseTimes, System.DateTime AlarmTime, System.DateTime RespondTime, int RespondTime1) {
                 ResponseTimesRow rowResponseTimesRow = ((ResponseTimesRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         Bed,
                         null,
                         AlarmTime,
-                        RespondTime};
+                        RespondTime,
+                        RespondTime1};
                 if ((parentStaffRowByStaffResponseTimes != null)) {
                     columnValuesArray[2] = parentStaffRowByStaffResponseTimes[0];
                 }
@@ -528,6 +539,7 @@ namespace PatientMonitor {
                 this.columnStaffID = base.Columns["StaffID"];
                 this.columnAlarmTime = base.Columns["AlarmTime"];
                 this.columnRespondTime = base.Columns["RespondTime"];
+                this.columnRespondTime1 = base.Columns["RespondTime1"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -543,6 +555,8 @@ namespace PatientMonitor {
                 base.Columns.Add(this.columnAlarmTime);
                 this.columnRespondTime = new global::System.Data.DataColumn("RespondTime", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnRespondTime);
+                this.columnRespondTime1 = new global::System.Data.DataColumn("RespondTime1", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnRespondTime1);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
                 this.columnID.AutoIncrement = true;
@@ -550,6 +564,7 @@ namespace PatientMonitor {
                 this.columnID.AutoIncrementStep = -1;
                 this.columnID.AllowDBNull = false;
                 this.columnID.Unique = true;
+                this.columnRespondTime1.Caption = "RespondTime";
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1379,6 +1394,22 @@ namespace PatientMonitor {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int RespondTime1 {
+                get {
+                    try {
+                        return ((int)(this[this.tableResponseTimes.RespondTime1Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'RespondTime1\' in table \'ResponseTimes\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableResponseTimes.RespondTime1Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public StaffRow StaffRow {
                 get {
                     return ((StaffRow)(this.GetParentRow(this.Table.ParentRelations["StaffResponseTimes"])));
@@ -1434,6 +1465,18 @@ namespace PatientMonitor {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetRespondTimeNull() {
                 this[this.tableResponseTimes.RespondTimeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsRespondTime1Null() {
+                return this.IsNull(this.tableResponseTimes.RespondTime1Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetRespondTime1Null() {
+                this[this.tableResponseTimes.RespondTime1Column] = global::System.Convert.DBNull;
             }
         }
         
@@ -1921,7 +1964,7 @@ namespace PatientMonitor.MonitorDBTableAdapters {
             tableMapping.ColumnMappings.Add("Bed", "Bed");
             tableMapping.ColumnMappings.Add("StaffID", "StaffID");
             tableMapping.ColumnMappings.Add("AlarmTime", "AlarmTime");
-            tableMapping.ColumnMappings.Add("RespondTime", "RespondTime");
+            tableMapping.ColumnMappings.Add("RespondTime", "RespondTime1");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
@@ -1935,7 +1978,7 @@ namespace PatientMonitor.MonitorDBTableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_AlarmTime", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "AlarmTime", global::System.Data.DataRowVersion.Original, true, null));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_AlarmTime", global::System.Data.OleDb.OleDbType.Date, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "AlarmTime", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_RespondTime", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "RespondTime", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_RespondTime", global::System.Data.OleDb.OleDbType.Date, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "RespondTime", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_RespondTime", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "RespondTime", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.InsertCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = "INSERT INTO `ResponseTimes` (`Bed`, `StaffID`, `AlarmTime`, `RespondTime`) VALUES" +
@@ -1944,7 +1987,7 @@ namespace PatientMonitor.MonitorDBTableAdapters {
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Bed", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Bed", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("StaffID", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "StaffID", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("AlarmTime", global::System.Data.OleDb.OleDbType.Date, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "AlarmTime", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("RespondTime", global::System.Data.OleDb.OleDbType.Date, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "RespondTime", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("RespondTime", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "RespondTime", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
             this._adapter.UpdateCommand.CommandText = @"UPDATE `ResponseTimes` SET `Bed` = ?, `StaffID` = ?, `AlarmTime` = ?, `RespondTime` = ? WHERE ((`ID` = ?) AND ((? = 1 AND `Bed` IS NULL) OR (`Bed` = ?)) AND ((? = 1 AND `StaffID` IS NULL) OR (`StaffID` = ?)) AND ((? = 1 AND `AlarmTime` IS NULL) OR (`AlarmTime` = ?)) AND ((? = 1 AND `RespondTime` IS NULL) OR (`RespondTime` = ?)))";
@@ -1952,7 +1995,7 @@ namespace PatientMonitor.MonitorDBTableAdapters {
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Bed", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Bed", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("StaffID", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "StaffID", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("AlarmTime", global::System.Data.OleDb.OleDbType.Date, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "AlarmTime", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("RespondTime", global::System.Data.OleDb.OleDbType.Date, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "RespondTime", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("RespondTime", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "RespondTime", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_ID", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ID", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_Bed", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Bed", global::System.Data.DataRowVersion.Original, true, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Bed", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Bed", global::System.Data.DataRowVersion.Original, false, null));
@@ -1961,7 +2004,7 @@ namespace PatientMonitor.MonitorDBTableAdapters {
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_AlarmTime", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "AlarmTime", global::System.Data.DataRowVersion.Original, true, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_AlarmTime", global::System.Data.OleDb.OleDbType.Date, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "AlarmTime", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_RespondTime", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "RespondTime", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_RespondTime", global::System.Data.OleDb.OleDbType.Date, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "RespondTime", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_RespondTime", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "RespondTime", global::System.Data.DataRowVersion.Original, false, null));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2038,7 +2081,7 @@ namespace PatientMonitor.MonitorDBTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_ID, global::System.Nullable<int> Original_Bed, global::System.Nullable<int> Original_StaffID, global::System.Nullable<global::System.DateTime> Original_AlarmTime, global::System.Nullable<global::System.DateTime> Original_RespondTime) {
+        public virtual int Delete(int Original_ID, global::System.Nullable<int> Original_Bed, global::System.Nullable<int> Original_StaffID, global::System.Nullable<global::System.DateTime> Original_AlarmTime, global::System.Nullable<int> Original_RespondTime) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_ID));
             if ((Original_Bed.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
@@ -2066,7 +2109,7 @@ namespace PatientMonitor.MonitorDBTableAdapters {
             }
             if ((Original_RespondTime.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[8].Value = ((System.DateTime)(Original_RespondTime.Value));
+                this.Adapter.DeleteCommand.Parameters[8].Value = ((int)(Original_RespondTime.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(1));
@@ -2092,7 +2135,7 @@ namespace PatientMonitor.MonitorDBTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(global::System.Nullable<int> Bed, global::System.Nullable<int> StaffID, global::System.Nullable<global::System.DateTime> AlarmTime, global::System.Nullable<global::System.DateTime> RespondTime) {
+        public virtual int Insert(global::System.Nullable<int> Bed, global::System.Nullable<int> StaffID, global::System.Nullable<global::System.DateTime> AlarmTime, global::System.Nullable<int> RespondTime) {
             if ((Bed.HasValue == true)) {
                 this.Adapter.InsertCommand.Parameters[0].Value = ((int)(Bed.Value));
             }
@@ -2112,7 +2155,7 @@ namespace PatientMonitor.MonitorDBTableAdapters {
                 this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
             if ((RespondTime.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((System.DateTime)(RespondTime.Value));
+                this.Adapter.InsertCommand.Parameters[3].Value = ((int)(RespondTime.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
@@ -2137,7 +2180,7 @@ namespace PatientMonitor.MonitorDBTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(global::System.Nullable<int> Bed, global::System.Nullable<int> StaffID, global::System.Nullable<global::System.DateTime> AlarmTime, global::System.Nullable<global::System.DateTime> RespondTime, int Original_ID, global::System.Nullable<int> Original_Bed, global::System.Nullable<int> Original_StaffID, global::System.Nullable<global::System.DateTime> Original_AlarmTime, global::System.Nullable<global::System.DateTime> Original_RespondTime) {
+        public virtual int Update(global::System.Nullable<int> Bed, global::System.Nullable<int> StaffID, global::System.Nullable<global::System.DateTime> AlarmTime, global::System.Nullable<int> RespondTime, int Original_ID, global::System.Nullable<int> Original_Bed, global::System.Nullable<int> Original_StaffID, global::System.Nullable<global::System.DateTime> Original_AlarmTime, global::System.Nullable<int> Original_RespondTime) {
             if ((Bed.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(Bed.Value));
             }
@@ -2157,7 +2200,7 @@ namespace PatientMonitor.MonitorDBTableAdapters {
                 this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
             if ((RespondTime.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((System.DateTime)(RespondTime.Value));
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(RespondTime.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
@@ -2189,7 +2232,7 @@ namespace PatientMonitor.MonitorDBTableAdapters {
             }
             if ((Original_RespondTime.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((System.DateTime)(Original_RespondTime.Value));
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((int)(Original_RespondTime.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(1));
