@@ -30,16 +30,22 @@ namespace PatientMonitor
 
         private void btnManage_Click(object sender, EventArgs e)
         {
-            Login m = new Login();
-            m.management = true;
-            m.Show();
+            if (!Application.OpenForms.OfType<Login>().Any())
+            {
+                Login m = new Login();
+                m.management = true;
+                m.Show();
+            }
         }
 
         private void btnMonitor_Click(object sender, EventArgs e)
         {
-            Login m = new Login();
-            m.management = false;
-            m.Show();
+            if (!Application.OpenForms.OfType<Login>().Any())
+            {
+                Login m = new Login();
+                m.management = false;
+                m.Show();
+            }
         }
 
         private void btnAbout_Click(object sender, EventArgs e)
