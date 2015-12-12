@@ -16,8 +16,6 @@ namespace PatientMonitor
         public Alarm()
         {
             InitializeComponent();
-            // Set window title
-            this.Text = "Patient in bed " + (Monitor.curBed + 1) + " needs attention!";
 
             // Play alarm sound and command it to loop
             MutableAlarm.PlayLooping();

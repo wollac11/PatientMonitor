@@ -33,9 +33,9 @@
             this.lblCounterAbove = new System.Windows.Forms.Label();
             this.btnDisableAbove = new System.Windows.Forms.Button();
             this.pageSetupDialog1 = new System.Windows.Forms.PageSetupDialog();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.btnMute = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -66,15 +66,6 @@
             this.btnDisableAbove.UseVisualStyleBackColor = true;
             this.btnDisableAbove.Click += new System.EventHandler(this.btnDisableAbove_Click);
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::PatientMonitor.Properties.Resources.Warning;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(31, 30);
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
-            // 
             // notifyIcon1
             // 
             this.notifyIcon1.BalloonTipText = "Patient Is Above Thresholds!";
@@ -93,6 +84,15 @@
             this.btnMute.UseVisualStyleBackColor = true;
             this.btnMute.Click += new System.EventHandler(this.btnMute_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::PatientMonitor.Properties.Resources.Warning;
+            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(31, 30);
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
+            // 
             // Alarm
             // 
             this.AcceptButton = this.btnDisableAbove;
@@ -108,7 +108,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Alarm";
-            this.Text = "Patient Above Limit!";
+            this.Text = "Patient Needs Attention!";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
