@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Security.Cryptography;
 
 namespace PatientMonitor
 {
@@ -16,6 +17,9 @@ namespace PatientMonitor
         {
             InitializeComponent();
         }
+
+        // Instantiate  Staff table adapter
+        MonitorDBTableAdapters.StaffTableAdapter staffTableAdapter = new MonitorDBTableAdapters.StaffTableAdapter();
 
         // Bool to set desired form
         public bool management;
@@ -30,10 +34,20 @@ namespace PatientMonitor
         {
             checkDetails();
         }
-
         private void checkDetails()
         {
-            loginSuccess();
+            string password = staffTableAdapter.PasswordQuery(txtUser.Text);
+            {
+                if (Password.verify(txtPass.Text, password))
+                {
+                    loginSuccess();
+                }
+                else
+                {
+                    loginFail();
+                }
+            }
+
         }
 
         private void loginSuccess()
@@ -64,5 +78,6 @@ namespace PatientMonitor
             txtUser.Text = "";
             txtPass.Text = "";
         }
+
     }
 }

@@ -41,6 +41,9 @@ namespace PatientMonitor
              }
         }
 
+        // Instantiate  ResponseTime table adapter
+        MonitorDBTableAdapters.ResponseTimesTableAdapter responseTableAdapter = new MonitorDBTableAdapters.ResponseTimesTableAdapter();
+
         private void btnDisableAbove_Click(object sender, EventArgs e)
         {
             //call timer recorder method to record the time taken
@@ -48,6 +51,9 @@ namespace PatientMonitor
 
             //call timer recorder class
             timesUp.csvWriter(lblCounterAbove.Text);
+
+            // Write response time to database
+            responseTableAdapter.Insert(Monitor.curBed, 3, DateTime.Now, DateTime.Now);
 
             //close the form once pressed
             this.Close();
@@ -77,6 +83,31 @@ namespace PatientMonitor
                 // Update button label
                 btnMute.Text = "Mute Alarm";
             }
+        }
+
+
+
+        private void responseTimesBindingNavigatorSaveItem_Click(object sender, EventArgs e)
+        {
+            this.Validate();
+            this.responseTimesBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.monitorDB);
+
+        }
+
+        private void responseTimesBindingNavigatorSaveItem_Click_1(object sender, EventArgs e)
+        {
+            this.Validate();
+            this.responseTimesBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.monitorDB);
+
+        }
+
+        private void Alarm_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'monitorDB.ResponseTimes' table. You can move, or remove it, as needed.
+            this.responseTimesTableAdapter.Fill(this.monitorDB.ResponseTimes);
+
         }
     }
 }
