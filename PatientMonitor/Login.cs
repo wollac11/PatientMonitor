@@ -21,6 +21,9 @@ namespace PatientMonitor
         // Instantiate  Staff table adapter
         MonitorDBTableAdapters.StaffTableAdapter staffTableAdapter = new MonitorDBTableAdapters.StaffTableAdapter();
 
+        // Instantiate  Shifts table adapter
+        MonitorDBTableAdapters.ShiftsTableAdapter shiftsTableAdapter = new MonitorDBTableAdapters.ShiftsTableAdapter();
+
         // Bool to set desired form
         public bool management;
 
@@ -52,6 +55,8 @@ namespace PatientMonitor
 
         private void loginSuccess()
         {
+            // Record login
+            shiftsTableAdapter.Insert(DateTime.Now, null, staffTableAdapter.StaffIDQuery(txtUser.Text));
             // Launch requested interface
             if (management == true)
             {
