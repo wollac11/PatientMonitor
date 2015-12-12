@@ -49,12 +49,6 @@ namespace PatientMonitor
 
         private void btnDisableAbove_Click(object sender, EventArgs e)
         {
-            //call timer recorder method to record the time taken
-            TimerRecorder timesUp = new TimerRecorder();
-
-            //call timer recorder class
-            timesUp.csvWriter(lblCounterAbove.Text);
-
             // Write response time to database
             responseTableAdapter.Insert(Monitor.curBed + 1, staffTableAdapter.StaffIDQuery(Monitor.curStaff), DateTime.Now, count);
 
