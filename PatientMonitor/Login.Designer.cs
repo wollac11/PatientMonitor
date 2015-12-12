@@ -65,9 +65,10 @@
             // 
             // txtPass
             // 
-            this.txtPass.Location = new System.Drawing.Point(74, 69);
+            this.txtPass.Location = new System.Drawing.Point(76, 69);
             this.txtPass.Name = "txtPass";
-            this.txtPass.Size = new System.Drawing.Size(171, 20);
+            this.txtPass.PasswordChar = '*';
+            this.txtPass.Size = new System.Drawing.Size(169, 20);
             this.txtPass.TabIndex = 3;
             // 
             // lblUser
