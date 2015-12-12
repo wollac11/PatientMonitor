@@ -22,12 +22,6 @@ namespace PatientMonitor
             this.Close();
         }
 
-        private void btnOption_Click(object sender, EventArgs e)
-        {
-            Options m = new Options();
-            m.Show();
-        }
-
         private void Management_Load(object sender, EventArgs e)
         {
             this.responseTimesTableAdapter.Fill(this.monitorDB.ResponseTimes);

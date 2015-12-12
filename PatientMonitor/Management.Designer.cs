@@ -30,24 +30,23 @@
         {
             this.components = new System.ComponentModel.Container();
             this.btnClose = new System.Windows.Forms.Button();
-            this.btnOption = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabShifts = new System.Windows.Forms.TabPage();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.staffIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.startTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.endTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.shiftsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.monitorDB = new PatientMonitor.MonitorDB();
             this.tabResponseTimes = new System.Windows.Forms.TabPage();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.responseTimesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.shiftsTableAdapter1 = new PatientMonitor.MonitorDBTableAdapters.ShiftsTableAdapter();
-            this.responseTimesTableAdapter = new PatientMonitor.MonitorDBTableAdapters.ResponseTimesTableAdapter();
-            this.staffIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.startTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.endTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.staffIDDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.alarmTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.respondTime1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.responseTimesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.shiftsTableAdapter1 = new PatientMonitor.MonitorDBTableAdapters.ShiftsTableAdapter();
+            this.responseTimesTableAdapter = new PatientMonitor.MonitorDBTableAdapters.ResponseTimesTableAdapter();
             this.tabControl1.SuspendLayout();
             this.tabShifts.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -67,16 +66,6 @@
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
-            // btnOption
-            // 
-            this.btnOption.Location = new System.Drawing.Point(12, 258);
-            this.btnOption.Name = "btnOption";
-            this.btnOption.Size = new System.Drawing.Size(75, 23);
-            this.btnOption.TabIndex = 1;
-            this.btnOption.Text = "Options";
-            this.btnOption.UseVisualStyleBackColor = true;
-            this.btnOption.Click += new System.EventHandler(this.btnOption_Click);
             // 
             // tabControl1
             // 
@@ -116,6 +105,29 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(411, 197);
             this.dataGridView1.TabIndex = 0;
+            // 
+            // staffIDDataGridViewTextBoxColumn
+            // 
+            this.staffIDDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.staffIDDataGridViewTextBoxColumn.DataPropertyName = "StaffID";
+            this.staffIDDataGridViewTextBoxColumn.HeaderText = "Staff ID";
+            this.staffIDDataGridViewTextBoxColumn.Name = "staffIDDataGridViewTextBoxColumn";
+            this.staffIDDataGridViewTextBoxColumn.ReadOnly = true;
+            this.staffIDDataGridViewTextBoxColumn.Width = 68;
+            // 
+            // startTimeDataGridViewTextBoxColumn
+            // 
+            this.startTimeDataGridViewTextBoxColumn.DataPropertyName = "StartTime";
+            this.startTimeDataGridViewTextBoxColumn.HeaderText = "StartTime";
+            this.startTimeDataGridViewTextBoxColumn.Name = "startTimeDataGridViewTextBoxColumn";
+            this.startTimeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // endTimeDataGridViewTextBoxColumn
+            // 
+            this.endTimeDataGridViewTextBoxColumn.DataPropertyName = "EndTime";
+            this.endTimeDataGridViewTextBoxColumn.HeaderText = "EndTime";
+            this.endTimeDataGridViewTextBoxColumn.Name = "endTimeDataGridViewTextBoxColumn";
+            this.endTimeDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // shiftsBindingSource
             // 
@@ -157,42 +169,6 @@
             this.dataGridView2.Size = new System.Drawing.Size(411, 197);
             this.dataGridView2.TabIndex = 0;
             // 
-            // responseTimesBindingSource
-            // 
-            this.responseTimesBindingSource.DataMember = "ResponseTimes";
-            this.responseTimesBindingSource.DataSource = this.monitorDB;
-            // 
-            // shiftsTableAdapter1
-            // 
-            this.shiftsTableAdapter1.ClearBeforeFill = true;
-            // 
-            // responseTimesTableAdapter
-            // 
-            this.responseTimesTableAdapter.ClearBeforeFill = true;
-            // 
-            // staffIDDataGridViewTextBoxColumn
-            // 
-            this.staffIDDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.staffIDDataGridViewTextBoxColumn.DataPropertyName = "StaffID";
-            this.staffIDDataGridViewTextBoxColumn.HeaderText = "Staff ID";
-            this.staffIDDataGridViewTextBoxColumn.Name = "staffIDDataGridViewTextBoxColumn";
-            this.staffIDDataGridViewTextBoxColumn.ReadOnly = true;
-            this.staffIDDataGridViewTextBoxColumn.Width = 68;
-            // 
-            // startTimeDataGridViewTextBoxColumn
-            // 
-            this.startTimeDataGridViewTextBoxColumn.DataPropertyName = "StartTime";
-            this.startTimeDataGridViewTextBoxColumn.HeaderText = "StartTime";
-            this.startTimeDataGridViewTextBoxColumn.Name = "startTimeDataGridViewTextBoxColumn";
-            this.startTimeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // endTimeDataGridViewTextBoxColumn
-            // 
-            this.endTimeDataGridViewTextBoxColumn.DataPropertyName = "EndTime";
-            this.endTimeDataGridViewTextBoxColumn.HeaderText = "EndTime";
-            this.endTimeDataGridViewTextBoxColumn.Name = "endTimeDataGridViewTextBoxColumn";
-            this.endTimeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
             // staffIDDataGridViewTextBoxColumn1
             // 
             this.staffIDDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
@@ -201,7 +177,6 @@
             this.staffIDDataGridViewTextBoxColumn1.Name = "staffIDDataGridViewTextBoxColumn1";
             this.staffIDDataGridViewTextBoxColumn1.ReadOnly = true;
             this.staffIDDataGridViewTextBoxColumn1.Visible = false;
-            this.staffIDDataGridViewTextBoxColumn1.Width = 65;
             // 
             // bedDataGridViewTextBoxColumn
             // 
@@ -230,13 +205,25 @@
             this.respondTime1DataGridViewTextBoxColumn.ReadOnly = true;
             this.respondTime1DataGridViewTextBoxColumn.Width = 128;
             // 
+            // responseTimesBindingSource
+            // 
+            this.responseTimesBindingSource.DataMember = "ResponseTimes";
+            this.responseTimesBindingSource.DataSource = this.monitorDB;
+            // 
+            // shiftsTableAdapter1
+            // 
+            this.shiftsTableAdapter1.ClearBeforeFill = true;
+            // 
+            // responseTimesTableAdapter
+            // 
+            this.responseTimesTableAdapter.ClearBeforeFill = true;
+            // 
             // Management
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(450, 293);
             this.Controls.Add(this.tabControl1);
-            this.Controls.Add(this.btnOption);
             this.Controls.Add(this.btnClose);
             this.Name = "Management";
             this.Text = "Management";
@@ -256,7 +243,6 @@
         #endregion
 
         private System.Windows.Forms.Button btnClose;
-        private System.Windows.Forms.Button btnOption;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabShifts;
         private System.Windows.Forms.TabPage tabResponseTimes;
