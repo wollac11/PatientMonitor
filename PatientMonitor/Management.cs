@@ -17,15 +17,6 @@ namespace PatientMonitor
             InitializeComponent();
         }
 
-        // Instantiate  Staff table adapter
-        MonitorDBTableAdapters.StaffTableAdapter staffTableAdapter = new MonitorDBTableAdapters.StaffTableAdapter();
-
-        // Instantiate  Shifts table adapter
-        MonitorDBTableAdapters.ShiftsTableAdapter shiftsTableAdapter = new MonitorDBTableAdapters.ShiftsTableAdapter();
-
-        // Instantiate  Response times table adapter
-        MonitorDBTableAdapters.ResponseTimesTableAdapter responseTableAdapter = new MonitorDBTableAdapters.ResponseTimesTableAdapter();
-
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -41,7 +32,6 @@ namespace PatientMonitor
         {
             this.responseTimesTableAdapter.Fill(this.monitorDB.ResponseTimes);
             this.shiftsTableAdapter1.Fill(this.monitorDB.Shifts);
-
         }
     }
 }
