@@ -17,6 +17,7 @@ namespace PatientMonitor
         {
             InitializeComponent();
             applyInitialThresholds();
+            Sensor.initialize();
             lblNurseName.Text = _curNurse;
         }
 
@@ -262,7 +263,6 @@ namespace PatientMonitor
         private void updateSelection()
         {
             _curBed = cbxBed.SelectedIndex;
-            Sensor.initialize();
         }
 
         private void cbxBed_SelectedIndexChanged(object sender, EventArgs e)

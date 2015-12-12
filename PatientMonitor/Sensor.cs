@@ -19,11 +19,14 @@ namespace PatientMonitor
 
         public static void initialize()
         {
-            //prevDia = 0;
-            //prevSys = 0;
-            //prevHR = 0;
-            //prevTemp = 0;
-            //prevBr = 0;
+            for (int i = 0; i <= 7; i++)
+            {
+                prevDia[i] = 0;
+                prevSys[i] = 0;
+                prevHR[i] = 0;
+                prevBr[i] = 0;
+                prevTemp[i] = 0;
+            }
         }
 
         public static int getDiaPressure(int i) 
