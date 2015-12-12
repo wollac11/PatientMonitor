@@ -109,8 +109,15 @@ namespace PatientMonitor
             DialogResult dialogResult = MessageBox.Show("Patient monitoring will be stopped. Are you sure?", "Close Monitor", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
-                // Close the monitor
-                this.Close();
+                // If central monitoring station is open
+                if (Application.OpenForms.OfType<CentralStation>().Any())
+                {
+                    // Close central station
+                    Application.OpenForms.OfType<CentralStation>().FirstOrDefault().Close();
+                }
+
+                    // Close the monitor
+                    this.Close();
             }
         }
 
@@ -308,8 +315,12 @@ namespace PatientMonitor
 
         private void btnStation_Click(object sender, EventArgs e)
         {
-            CentralStation m = new CentralStation();
-            m.Show();
+            if (!Application.OpenForms.OfType<CentralStation>().Any())
+            {
+                CentralStation m = new CentralStation();
+                m.Show();
+            }
+            else Application.OpenForms.OfType<CentralStation>().FirstOrDefault().Focus();
         }
     }
 }

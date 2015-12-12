@@ -288,7 +288,7 @@
             this.lblTempMin.Name = "lblTempMin";
             this.lblTempMin.Size = new System.Drawing.Size(21, 13);
             this.lblTempMin.TabIndex = 15;
-            this.lblTempMin.Text = "37";
+            this.lblTempMin.Text = "35";
             // 
             // tbrDiaPressureMin
             // 
@@ -299,7 +299,7 @@
             this.tbrDiaPressureMin.Size = new System.Drawing.Size(176, 45);
             this.tbrDiaPressureMin.TabIndex = 2;
             this.tbrDiaPressureMin.TickFrequency = 10;
-            this.tbrDiaPressureMin.Value = 60;
+            this.tbrDiaPressureMin.Value = 50;
             this.tbrDiaPressureMin.ValueChanged += new System.EventHandler(this.tbrDiaPressureMin_OnValueChanged);
             // 
             // lblDiaPressureMin
@@ -310,7 +310,7 @@
             this.lblDiaPressureMin.Name = "lblDiaPressureMin";
             this.lblDiaPressureMin.Size = new System.Drawing.Size(21, 13);
             this.lblDiaPressureMin.TabIndex = 14;
-            this.lblDiaPressureMin.Text = "60";
+            this.lblDiaPressureMin.Text = "50";
             // 
             // lblSysPressureMin
             // 
@@ -320,7 +320,7 @@
             this.lblSysPressureMin.Name = "lblSysPressureMin";
             this.lblSysPressureMin.Size = new System.Drawing.Size(21, 13);
             this.lblSysPressureMin.TabIndex = 13;
-            this.lblSysPressureMin.Text = "90";
+            this.lblSysPressureMin.Text = "80";
             // 
             // lblHRMin
             // 
@@ -330,7 +330,7 @@
             this.lblHRMin.Name = "lblHRMin";
             this.lblHRMin.Size = new System.Drawing.Size(21, 13);
             this.lblHRMin.TabIndex = 12;
-            this.lblHRMin.Text = "75";
+            this.lblHRMin.Text = "50";
             // 
             // lblSystolic
             // 
@@ -385,7 +385,7 @@
             this.tbrTempMin.Name = "tbrTempMin";
             this.tbrTempMin.Size = new System.Drawing.Size(104, 45);
             this.tbrTempMin.TabIndex = 4;
-            this.tbrTempMin.Value = 37;
+            this.tbrTempMin.Value = 35;
             this.tbrTempMin.ValueChanged += new System.EventHandler(this.tbrTempMin_OnValueChanged);
             // 
             // tbrSysPressureMin
@@ -397,7 +397,7 @@
             this.tbrSysPressureMin.Size = new System.Drawing.Size(184, 45);
             this.tbrSysPressureMin.TabIndex = 3;
             this.tbrSysPressureMin.TickFrequency = 10;
-            this.tbrSysPressureMin.Value = 90;
+            this.tbrSysPressureMin.Value = 80;
             this.tbrSysPressureMin.ValueChanged += new System.EventHandler(this.tbrSysPressureMin_OnValueChanged);
             // 
             // tbrHRMin
@@ -409,7 +409,7 @@
             this.tbrHRMin.Size = new System.Drawing.Size(105, 45);
             this.tbrHRMin.TabIndex = 1;
             this.tbrHRMin.TickFrequency = 10;
-            this.tbrHRMin.Value = 76;
+            this.tbrHRMin.Value = 50;
             this.tbrHRMin.ValueChanged += new System.EventHandler(this.tbrHRMin_OnValueChanged);
             // 
             // tbrBRMin
@@ -457,7 +457,7 @@
             this.lblBRMax.Name = "lblBRMax";
             this.lblBRMax.Size = new System.Drawing.Size(21, 13);
             this.lblBRMax.TabIndex = 31;
-            this.lblBRMax.Text = "18";
+            this.lblBRMax.Text = "30";
             // 
             // tbrDiaPressureMax
             // 
@@ -468,7 +468,7 @@
             this.tbrDiaPressureMax.Size = new System.Drawing.Size(176, 45);
             this.tbrDiaPressureMax.TabIndex = 19;
             this.tbrDiaPressureMax.TickFrequency = 10;
-            this.tbrDiaPressureMax.Value = 70;
+            this.tbrDiaPressureMax.Value = 80;
             this.tbrDiaPressureMax.ValueChanged += new System.EventHandler(this.tbrDiaPressureMax_OnValueChanged);
             // 
             // lblTempMax
@@ -479,7 +479,7 @@
             this.lblTempMax.Name = "lblTempMax";
             this.lblTempMax.Size = new System.Drawing.Size(21, 13);
             this.lblTempMax.TabIndex = 30;
-            this.lblTempMax.Text = "39";
+            this.lblTempMax.Text = "40";
             // 
             // lblDiaPressureMax
             // 
@@ -489,7 +489,7 @@
             this.lblDiaPressureMax.Name = "lblDiaPressureMax";
             this.lblDiaPressureMax.Size = new System.Drawing.Size(21, 13);
             this.lblDiaPressureMax.TabIndex = 29;
-            this.lblDiaPressureMax.Text = "70";
+            this.lblDiaPressureMax.Text = "80";
             // 
             // tbrSysPressureMax
             // 
@@ -500,7 +500,7 @@
             this.tbrSysPressureMax.Size = new System.Drawing.Size(184, 45);
             this.tbrSysPressureMax.TabIndex = 20;
             this.tbrSysPressureMax.TickFrequency = 10;
-            this.tbrSysPressureMax.Value = 110;
+            this.tbrSysPressureMax.Value = 150;
             this.tbrSysPressureMax.ValueChanged += new System.EventHandler(this.tbrSysPressureMax_OnValueChanged);
             // 
             // lblSysPressureMax
@@ -511,7 +511,7 @@
             this.lblSysPressureMax.Name = "lblSysPressureMax";
             this.lblSysPressureMax.Size = new System.Drawing.Size(28, 13);
             this.lblSysPressureMax.TabIndex = 28;
-            this.lblSysPressureMax.Text = "110";
+            this.lblSysPressureMax.Text = "150";
             // 
             // tbrTempMax
             // 
@@ -521,7 +521,7 @@
             this.tbrTempMax.Name = "tbrTempMax";
             this.tbrTempMax.Size = new System.Drawing.Size(104, 45);
             this.tbrTempMax.TabIndex = 21;
-            this.tbrTempMax.Value = 39;
+            this.tbrTempMax.Value = 40;
             this.tbrTempMax.ValueChanged += new System.EventHandler(this.tbrTempMax_OnValueChanged);
             // 
             // lblHRMax
@@ -600,7 +600,7 @@
             this.tbrBRMax.Size = new System.Drawing.Size(104, 45);
             this.tbrBRMax.TabIndex = 17;
             this.tbrBRMax.TickFrequency = 5;
-            this.tbrBRMax.Value = 18;
+            this.tbrBRMax.Value = 30;
             this.tbrBRMax.ValueChanged += new System.EventHandler(this.tbrBRMax_OnValueChanged);
             // 
             // gbxMonitor
