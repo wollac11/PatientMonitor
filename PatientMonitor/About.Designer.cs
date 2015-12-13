@@ -53,7 +53,7 @@
             this.lblVersion.Name = "lblVersion";
             this.lblVersion.Size = new System.Drawing.Size(60, 13);
             this.lblVersion.TabIndex = 1;
-            this.lblVersion.Text = "Version 0.1";
+            this.lblVersion.Text = "Version 1.0";
             this.lblVersion.Click += new System.EventHandler(this.lblVersion_Click);
             // 
             // lblAboutDetail
@@ -78,7 +78,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::PatientMonitor.Properties.Resources.thumb_Information;
-            this.pictureBox1.Location = new System.Drawing.Point(13, 13);
+            this.pictureBox1.Location = new System.Drawing.Point(12, 26);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(54, 50);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
