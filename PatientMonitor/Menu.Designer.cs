@@ -32,7 +32,6 @@
             this.btnExit = new System.Windows.Forms.Button();
             this.btnMonitor = new System.Windows.Forms.Button();
             this.btnManage = new System.Windows.Forms.Button();
-            this.lblStatus = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnAbout = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
@@ -72,15 +71,6 @@
             this.btnManage.UseVisualStyleBackColor = true;
             this.btnManage.Click += new System.EventHandler(this.btnManage_Click);
             // 
-            // lblStatus
-            // 
-            this.lblStatus.AutoSize = true;
-            this.lblStatus.Location = new System.Drawing.Point(167, 233);
-            this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(37, 13);
-            this.lblStatus.TabIndex = 4;
-            this.lblStatus.Text = "Status";
-            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.btnManage);
@@ -111,7 +101,6 @@
             this.ClientSize = new System.Drawing.Size(369, 259);
             this.Controls.Add(this.btnAbout);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.btnExit);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -120,7 +109,6 @@
             this.Text = "Patient Monitor";
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -129,7 +117,6 @@
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnMonitor;
         private System.Windows.Forms.Button btnManage;
-        private System.Windows.Forms.Label lblStatus;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnAbout;
     }
