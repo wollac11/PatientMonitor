@@ -137,6 +137,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 144);
+            this.ControlBox = false;
             this.Controls.Add(this.lblRepeat);
             this.Controls.Add(this.lblPassword);
             this.Controls.Add(this.lblPosition);
@@ -148,6 +149,7 @@
             this.Controls.Add(this.txtPass1);
             this.Controls.Add(this.txtName);
             this.Name = "NewUser";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "New User";
             this.ResumeLayout(false);
             this.PerformLayout();

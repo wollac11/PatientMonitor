@@ -216,6 +216,7 @@
             // Btn_close
             // 
             this.Btn_close.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Btn_close.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.Btn_close.Location = new System.Drawing.Point(388, 472);
             this.Btn_close.Name = "Btn_close";
             this.Btn_close.Size = new System.Drawing.Size(75, 23);
@@ -700,6 +701,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.Btn_close;
             this.ClientSize = new System.Drawing.Size(480, 503);
             this.Controls.Add(this.btnStation);
             this.Controls.Add(this.lblStaffName);
