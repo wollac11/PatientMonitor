@@ -24,8 +24,8 @@ namespace PatientMonitor
 
             for (int i = 0; i <= 7; i++)
             {
-                if (Monitor.pastThreshold[i] == true) panel[i].BackColor = Color.Red;
-                else panel[i].BackColor = Color.Green;
+                if (Monitor.pastThreshold[i] == true) panel[i].BackgroundImage = Properties.Resources.bedWarn;
+                else panel[i].BackgroundImage = Properties.Resources.bedNormal;
             }
         }
     }
