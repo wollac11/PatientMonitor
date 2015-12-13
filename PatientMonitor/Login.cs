@@ -27,6 +27,8 @@ namespace PatientMonitor
         // Bool to set desired form
         public bool management;
 
+        /* -------- Event Handlers -------- */
+
         private void btnCancel_Click(object sender, EventArgs e)
         {
             // Close login box
@@ -35,8 +37,15 @@ namespace PatientMonitor
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            // Check user inputs are valid
             checkDetails();
         }
+
+        /* -------- Main Methods -------- */
+
+        /// <summary>
+        /// Validates username and password
+        /// </summary>
         private void checkDetails()
         {
             string password = staffTableAdapter.PasswordQuery(txtUser.Text);
@@ -53,6 +62,9 @@ namespace PatientMonitor
 
         }
 
+        /// <summary>
+        /// Logs user into the requested interface
+        /// </summary>
         private void loginSuccess()
         {
             // Get staffID
@@ -92,6 +104,9 @@ namespace PatientMonitor
             this.Close();
         }
 
+        /// <summary>
+        /// Refuses login for and resets input fields
+        /// </summary>
         private void loginFail()
         {
             // Alert of failure

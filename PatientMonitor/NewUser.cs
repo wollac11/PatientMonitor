@@ -17,16 +17,21 @@ namespace PatientMonitor
             InitializeComponent();
         }
 
+        // Instantiate  Staff table adapter
+        MonitorDBTableAdapters.StaffTableAdapter staffTableAdapter = new MonitorDBTableAdapters.StaffTableAdapter();
 
+        /* -------- Event Handlers -------- */
 
+        /// <summary>
+        /// Cancels new user creation and closes form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnCancel_Click(object sender, EventArgs e)
         {
             // Close new user form
             this.Close();
         }
-
-        // Instantiate  Staff table adapter
-        MonitorDBTableAdapters.StaffTableAdapter staffTableAdapter = new MonitorDBTableAdapters.StaffTableAdapter();
 
         private void btnAddUser_Click(object sender, EventArgs e)
         {
@@ -34,6 +39,11 @@ namespace PatientMonitor
             if (verifyInput() == true) addUser();
         }
 
+        /* -------- Main Methods -------- */
+
+        /// <summary>
+        /// Validates field inputs
+        /// </summary>
         private bool verifyInput()
         {
             // Set validation flag to false
@@ -49,6 +59,9 @@ namespace PatientMonitor
             return result;
         }
 
+        /// <summary>
+        /// Adds new user to database
+        /// </summary>
         private void addUser()
         {
             // Add new user as new row in staff table

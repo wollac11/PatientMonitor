@@ -12,26 +12,38 @@ namespace PatientMonitor
 {
     public partial class Options : Form
     {
-        //public static bool heartRate;
         public Options()
         {
             InitializeComponent();
+            // Initialise checkbox states
             setCheckBoxes();
         }
 
+        /// <summary>
+        /// Sets module status properties and closes form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnClose_Click(object sender, EventArgs e)
         {
             applyOptions();
             this.Close();
         }
 
+        /// <summary>
+        /// Opens program about screen
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAbout_Click(object sender, EventArgs e)
         {
             About m = new About();
             m.Show();
         }
 
-        // Sets checkbox values to their corresponding monitor properties
+        /// <summary>
+        /// Sets checkbox values to their corresponding monitor properties
+        /// </summary>
         private void setCheckBoxes()
         {
             ckbHeartRate.Checked = Monitor.hrEnable;
@@ -40,7 +52,9 @@ namespace PatientMonitor
             cbxBloodPressure.Checked = Monitor.pressureEnable;
         }
 
-        // Sets monitor propertiees to their corresponding checkbox values
+        /// <summary>
+        /// Sets monitor propertiees to their corresponding checkbox values
+        /// </summary>
         private void applyOptions()
         {
             Monitor.hrEnable = ckbHeartRate.Checked;

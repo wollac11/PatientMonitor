@@ -7,8 +7,15 @@ using System.Security.Cryptography;
 
 namespace PatientMonitor
 {
+    // A class for encypting and verifying password hashes.
+    // Based on MDSN MD5 libary example: https://goo.gl/FbSRoa
+
     class Password
     {
+        /// <summary>
+        /// Generates encrypted MD5 hash for password string
+        /// </summary>
+        /// <param name="input">String to hash</param>
         public static string encrypt(string input)
         {
             // Create a new instance of the MD5CryptoServiceProvider object.
@@ -32,13 +39,17 @@ namespace PatientMonitor
             return sBuilder.ToString();
         }
 
-        // Verify a hash against a string.
+        /// <summary>
+        /// Verifies an MD5 hash with an unhashed string.
+        /// </summary>
+        /// <param name="input">String to verify</param>
+        /// <param name="hash">Hash to compare with</param>
         public static bool verify(string input, string hash)
         {
             // Hash the input.
             string hashOfInput = encrypt(input);
 
-            // Create a StringComparer an compare the hashes.
+            // Create a StringComparer and compare the hashes.
             StringComparer comparer = StringComparer.OrdinalIgnoreCase;
 
             if (0 == comparer.Compare(hashOfInput, hash))

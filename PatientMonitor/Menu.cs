@@ -17,6 +17,13 @@ namespace PatientMonitor
             InitializeComponent();
         }
 
+        /* -------- Event Handlers -------- */
+
+        /// <summary>
+        /// Exits the application (pending user confirmation)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnExit_Click(object sender, EventArgs e)
         {
             // Confirm that user really wants to exit the application
@@ -28,8 +35,14 @@ namespace PatientMonitor
             }
         }
 
+        /// <summary>
+        /// Opens the management interface with login request
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnManage_Click(object sender, EventArgs e)
         {
+            // Procceed of no login prompt is currently open
             if (!Application.OpenForms.OfType<Login>().Any())
             {
                 Login m = new Login();
@@ -38,8 +51,14 @@ namespace PatientMonitor
             }
         }
 
+        /// <summary>
+        /// Opens the monitor interface with login request
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnMonitor_Click(object sender, EventArgs e)
         {
+            // Procceed of no login prompt is currently open
             if (!Application.OpenForms.OfType<Login>().Any())
             {
                 Login m = new Login();
@@ -48,6 +67,11 @@ namespace PatientMonitor
             }
         }
 
+        /// <summary>
+        /// Opens the program about screen
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAbout_Click(object sender, EventArgs e)
         {
             About m = new About();

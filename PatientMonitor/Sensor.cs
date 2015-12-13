@@ -6,8 +6,12 @@ using System.Threading.Tasks;
 
 namespace PatientMonitor
 {
+    // A virtual sensor which generates readings for a range of patient vitals
     class Sensor
     {
+        /* -------- Variable Declaration & Assignment -------- */
+
+        // Generate new random instance
         static Random r = new Random();
 
         // Arrays for retaining previous readings
@@ -17,6 +21,11 @@ namespace PatientMonitor
         static int[] prevBr = new int[8];
         static double[] prevTemp = new double[8];
 
+        /* -------- Main Methods -------- */
+
+        /// <summary>
+        /// Clears all previous readings and starts afresh
+        /// </summary>
         public static void initialize()
         {
             for (int i = 0; i <= 7; i++)
@@ -29,6 +38,10 @@ namespace PatientMonitor
             }
         }
 
+        /// <summary>
+        /// Generates a diastolic pressure reading
+        /// </summary>
+        /// <param name="i">Bed number</param>
         public static int getDiaPressure(int i) 
         {
             if (prevDia[i] == 0)
@@ -43,6 +56,10 @@ namespace PatientMonitor
             return prevDia[i];
         }
 
+        /// <summary>
+        /// Generates a systolic pressure reading
+        /// </summary>
+        /// <param name="i">Bed number</param>
         public static int getSysPressure(int i)
         {
             if (prevSys[i] == 0)
@@ -57,6 +74,10 @@ namespace PatientMonitor
             return prevSys[i];
         }
 
+        /// <summary>
+        /// Generates a pulse rate reading
+        /// </summary>
+        /// <param name="i">Bed number</param>
         public static int getHeartRate(int i)
         {
             if (prevHR[i] == 0)
@@ -78,6 +99,10 @@ namespace PatientMonitor
             return prevHR[i];
         }
 
+        /// <summary>
+        /// Generates a breathing rate reading
+        /// </summary>
+        /// <param name="i">Bed number</param>
         public static int getBreathRate(int i)
         {
             if (prevBr[i] == 0)
@@ -100,6 +125,10 @@ namespace PatientMonitor
             return prevBr[i];
         }
 
+        /// <summary>
+        /// Generates a body temperature reading
+        /// </summary>
+        /// <param name="i">Bed number</param>
         public static double getBodyTemp(int i)
         {
             int integralPart = 0;

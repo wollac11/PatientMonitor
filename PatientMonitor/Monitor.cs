@@ -15,15 +15,47 @@ namespace PatientMonitor
 
         public Monitor()
         {
+            // Initialize Monitor
             InitializeComponent();
             applyInitialThresholds();
+            // Initialize Sensor
             Sensor.initialize();
+            // Set attending staff display to current user
             lblStaffName.Text = _curStaff;
         }
 
-        // Instantiate  Shifts table adapter
+        /* -------- Variable Declaration & Assignment -------- */
+
+        // Intialise jagged array of multidimensional arrays holding min and max alarm
+        // thresholds for each of the patient vitals
+        int[][,] alarmThreshold = new int[8][,]
+        {
+            new int[5,2],
+            new int[5,2],
+            new int[5,2],
+            new int[5,2],
+            new int[5,2],
+            new int[5,2],
+            new int[5,2],
+            new int[5,2],
+        };
+
+        // Vital stats for currently proccessing bed
+        double[] curStat = new double[5];
+        // Boolean alarm limit flags for each bed
+        public static bool[] pastThreshold = new bool[8];
+
+        // Shift details
+        public DateTime startTime;
+        public int staffID;
+        public int shiftID;
+
+        // Instantiate Shifts table adapter
         MonitorDBTableAdapters.ShiftsTableAdapter shiftsTableAdapter = new MonitorDBTableAdapters.ShiftsTableAdapter();
 
+        /* -------- Event Handlers -------- */
+
+        // Update alarm threshold labels when sliders moved
         private void tbrHRMin_OnValueChanged(object sender, EventArgs e)
         {
             lblHRMin.Text = tbrHRMin.Value.ToString();
@@ -73,19 +105,30 @@ namespace PatientMonitor
             lblDiaPressureMax.Text = tbrDiaPressureMax.Value.ToString();
         }
 
-        // Intialise jagged array of multidimensional arrays holding min and max alarm
-        // thresholds for each of the patient vitals
-        int[][,] alarmThreshold = new int[8][,]
+        /// <summary>
+        /// Opens options form to toggle modules
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnOptions_Click(object sender, EventArgs e)
         {
-            new int[5,2],
-            new int[5,2],
-            new int[5,2],
-            new int[5,2],
-            new int[5,2],
-            new int[5,2],
-            new int[5,2],
-            new int[5,2],
-        };
+            if (!Application.OpenForms.OfType<Options>().Any())
+            {
+                Options m = new Options();
+                m.Show();
+            }
+            else Application.OpenForms.OfType<Options>().FirstOrDefault().Focus();
+        }
+
+        /// <summary>
+        /// Polls sensors (once a second)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void timerRefresh_Tick(object sender, EventArgs e)
+        {
+            checkVitals();
+        }
 
         /// <summary>
         /// Applies min and max alarm thresholds for current patient vitals
@@ -106,6 +149,11 @@ namespace PatientMonitor
             }
         }
 
+        /// <summary>
+        /// Stops monitor and logs out current attenting staff member
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnClose_Click(object sender, EventArgs e)
         {
             // Confirm that user really wants to close the monitor
@@ -127,22 +175,44 @@ namespace PatientMonitor
             }
         }
 
-        private void btnOptions_Click(object sender, EventArgs e)
-        {   
-            if (!Application.OpenForms.OfType<Options>().Any())
+        /// <summary>
+        /// Opens central overview station
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnStation_Click(object sender, EventArgs e)
+        {
+            if (!Application.OpenForms.OfType<CentralStation>().Any())
             {
-                Options m = new Options();
+                CentralStation m = new CentralStation();
                 m.Show();
             }
-            else Application.OpenForms.OfType<Options>().FirstOrDefault().Focus();
+            else Application.OpenForms.OfType<CentralStation>().FirstOrDefault().Focus();
         }
 
-        private void timerRefresh_Tick(object sender, EventArgs e)
+        /// <summary>
+        /// Switches monitor to selected patient
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void cbxBed_SelectedIndexChanged(object sender, EventArgs e)
         {
-            checkVitals();
+            if (cbxBed.SelectedIndex > -1)
+            {
+                // Poll sensors
+                timerRefresh.Enabled = true;
+                // Update bed selection
+                updateSelection();
+            }
+            // Stop polling sensors
+            else timerRefresh.Enabled = false;
         }
 
-        // Updates display with sensor values for enabled modules
+        /* -------- Main Methods -------- */
+
+        /// <summary>
+        /// Updates display with sensor values for enabled modules
+        /// </summary>
         private void updateDisplay()
         {
             // Only procceed if a bed is selected 
@@ -168,10 +238,11 @@ namespace PatientMonitor
             
         }
 
-        double[] curStat = new double[5];
-
-        public static bool[] pastThreshold = new bool[8];
-
+        /// <summary>
+        /// Compares all threshold values with sensor values and sets
+        /// their status. Also calls alarm trigger if currently monitored
+        /// bed is one of those past its thresholds.
+        /// </summary>
         private void checkVitals()
         {
             for (int i = 0; i <= 7; i++)
@@ -225,6 +296,9 @@ namespace PatientMonitor
             if (pastThreshold[_curBed] == true) placeAlarm();
         }
 
+        /// <summary>
+        /// Places new alarm (if there isn't one already)
+        /// </summary>
         private void placeAlarm()
         {
             // If there isnt already an alarm
@@ -236,66 +310,9 @@ namespace PatientMonitor
             }
         }
 
-        static bool _hrEnable = true;
-        public static bool hrEnable
-        {
-            get { return _hrEnable; }
-            set { _hrEnable = value;}
-        }
-
-        static bool _pressureEnable = true;
-        public static bool pressureEnable
-        {
-            get { return _pressureEnable; }
-            set { _pressureEnable = value; }
-        }
-
-        static bool _breathEnable = true;
-        public static bool breathEnable
-        {
-            get { return _breathEnable; }
-            set { _breathEnable = value; }
-        }
-
-        static bool _tempEnable = true;
-        public static bool tempEnable
-        {
-            get { return _tempEnable; }
-            set { _tempEnable = value; }
-        }
-
-        static int _curBed;
-        public static int curBed
-        {
-            get { return _curBed; }
-        }
-
-        static string _curStaff;
-        public static string curStaff
-        {
-            get { return _curStaff; }
-            set { _curStaff = value; }
-        }
-
-        public DateTime startTime;
-        public int staffID;
-        public int shiftID;
-
-        private void updateSelection()
-        {
-            _curBed = cbxBed.SelectedIndex;
-        }
-
-        private void cbxBed_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cbxBed.SelectedIndex > -1)
-            {
-                timerRefresh.Enabled = true;
-                updateSelection();
-            }
-            else timerRefresh.Enabled = false;
-        }
-
+        /// <summary>
+        /// Sets all beds to default alarm thresholds
+        /// </summary>
         private void applyInitialThresholds()
         {
             for (int i = 0; i <= 7; i++)
@@ -304,6 +321,10 @@ namespace PatientMonitor
             }
         }
 
+        /// <summary>
+        /// Applies alarm thresholds
+        /// </summary>
+        /// <param name="bed">Chosen bed</param>
         private void setThresholds(int bed)
         {
             // Set heart rate thresholds
@@ -327,14 +348,62 @@ namespace PatientMonitor
             alarmThreshold[bed][4, 1] = tbrTempMax.Value;
         }
 
-        private void btnStation_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Updates bed selection for monitoring
+        /// </summary>
+        private void updateSelection()
         {
-            if (!Application.OpenForms.OfType<CentralStation>().Any())
-            {
-                CentralStation m = new CentralStation();
-                m.Show();
-            }
-            else Application.OpenForms.OfType<CentralStation>().FirstOrDefault().Focus();
+            _curBed = cbxBed.SelectedIndex;
         }
+
+        /* -------- Class Properties -------- */
+
+        // Pulse rate module status
+        static bool _hrEnable = true;
+        public static bool hrEnable
+        {
+            get { return _hrEnable; }
+            set { _hrEnable = value;}
+        }
+
+        // Blood pressure module status
+        static bool _pressureEnable = true;
+        public static bool pressureEnable
+        {
+            get { return _pressureEnable; }
+            set { _pressureEnable = value; }
+        }
+
+        // Breathing rate module status
+        static bool _breathEnable = true;
+        public static bool breathEnable
+        {
+            get { return _breathEnable; }
+            set { _breathEnable = value; }
+        }
+
+        // Body temp module status
+        static bool _tempEnable = true;
+        public static bool tempEnable
+        {
+            get { return _tempEnable; }
+            set { _tempEnable = value; }
+        }
+
+        // Curent bed being monitored
+        static int _curBed;
+        public static int curBed
+        {
+            get { return _curBed; }
+        }
+
+        // Current attending staff member
+        static string _curStaff;
+        public static string curStaff
+        {
+            get { return _curStaff; }
+            set { _curStaff = value; }
+        }
+
     }
 }
