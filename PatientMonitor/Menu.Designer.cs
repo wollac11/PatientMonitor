@@ -57,7 +57,7 @@
             this.btnMonitor.Name = "btnMonitor";
             this.btnMonitor.Size = new System.Drawing.Size(328, 53);
             this.btnMonitor.TabIndex = 2;
-            this.btnMonitor.Text = "Monitor";
+            this.btnMonitor.Text = "&Monitor";
             this.btnMonitor.UseVisualStyleBackColor = true;
             this.btnMonitor.Click += new System.EventHandler(this.btnMonitor_Click);
             // 
@@ -68,7 +68,7 @@
             this.btnManage.Name = "btnManage";
             this.btnManage.Size = new System.Drawing.Size(328, 50);
             this.btnManage.TabIndex = 3;
-            this.btnManage.Text = "Manage";
+            this.btnManage.Text = "Ma&nage";
             this.btnManage.UseVisualStyleBackColor = true;
             this.btnManage.Click += new System.EventHandler(this.btnManage_Click);
             // 
@@ -99,7 +99,7 @@
             this.btnAbout.Name = "btnAbout";
             this.btnAbout.Size = new System.Drawing.Size(75, 23);
             this.btnAbout.TabIndex = 4;
-            this.btnAbout.Text = "About";
+            this.btnAbout.Text = "&About";
             this.btnAbout.UseVisualStyleBackColor = true;
             this.btnAbout.Click += new System.EventHandler(this.btnAbout_Click);
             // 
