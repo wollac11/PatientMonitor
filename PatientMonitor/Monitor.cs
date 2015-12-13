@@ -203,6 +203,8 @@ namespace PatientMonitor
                 timerRefresh.Enabled = true;
                 // Update bed selection
                 updateSelection();
+                // Update slider values
+                updateSliders();
             }
             // Stop polling sensors
             else timerRefresh.Enabled = false;
@@ -354,6 +356,33 @@ namespace PatientMonitor
         private void updateSelection()
         {
             _curBed = cbxBed.SelectedIndex;
+        }
+
+        /// <summary>
+        /// Updates slider settings to saved alarm thresholds
+        /// for current bed
+        /// </summary>
+        private void updateSliders()
+        {
+            // Set heart rate sliders to thresholds
+            tbrHRMin.Value = alarmThreshold[_curBed][0, 0];
+            tbrHRMax.Value = alarmThreshold[_curBed][0, 1];
+
+            // Set breathing rate sliders to thresholds
+            tbrBRMin.Value = alarmThreshold[_curBed][1, 0];
+            tbrBRMax.Value = alarmThreshold[_curBed][1, 1];
+
+            // Set Systolic pressure sliders to thresholds
+            tbrSysPressureMin.Value = alarmThreshold[_curBed][2, 0];
+            tbrSysPressureMax.Value = alarmThreshold[_curBed][2, 1];
+
+            // Set Diastolic pressure sliders to thresholds
+            tbrDiaPressureMin.Value = alarmThreshold[_curBed][3, 0];
+            tbrDiaPressureMax.Value = alarmThreshold[_curBed][3, 1];
+
+            // Set temperature sliders to thresholds
+            tbrTempMin.Value = alarmThreshold[_curBed][4, 0];
+            tbrTempMax.Value = alarmThreshold[_curBed][4, 1];
         }
 
         /* -------- Class Properties -------- */
