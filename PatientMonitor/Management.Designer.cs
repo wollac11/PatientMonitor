@@ -29,32 +29,33 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Management));
             this.btnClose = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabShifts = new System.Windows.Forms.TabPage();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.tabResponseTimes = new System.Windows.Forms.TabPage();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.btnAddStaff = new System.Windows.Forms.Button();
             this.staffIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.startTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.endTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.shiftsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.monitorDB = new PatientMonitor.MonitorDB();
+            this.tabResponseTimes = new System.Windows.Forms.TabPage();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.staffIDDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.alarmTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.respondTime1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.responseTimesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.btnAddStaff = new System.Windows.Forms.Button();
             this.shiftsTableAdapter1 = new PatientMonitor.MonitorDBTableAdapters.ShiftsTableAdapter();
             this.responseTimesTableAdapter = new PatientMonitor.MonitorDBTableAdapters.ResponseTimesTableAdapter();
             this.tabControl1.SuspendLayout();
             this.tabShifts.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.tabResponseTimes.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.shiftsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.monitorDB)).BeginInit();
+            this.tabResponseTimes.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.responseTimesBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -107,46 +108,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(411, 197);
             this.dataGridView1.TabIndex = 0;
             // 
-            // tabResponseTimes
-            // 
-            this.tabResponseTimes.Controls.Add(this.dataGridView2);
-            this.tabResponseTimes.Location = new System.Drawing.Point(4, 22);
-            this.tabResponseTimes.Name = "tabResponseTimes";
-            this.tabResponseTimes.Padding = new System.Windows.Forms.Padding(3);
-            this.tabResponseTimes.Size = new System.Drawing.Size(417, 203);
-            this.tabResponseTimes.TabIndex = 1;
-            this.tabResponseTimes.Text = "Response Times";
-            this.tabResponseTimes.UseVisualStyleBackColor = true;
-            // 
-            // dataGridView2
-            // 
-            this.dataGridView2.AllowUserToAddRows = false;
-            this.dataGridView2.AllowUserToDeleteRows = false;
-            this.dataGridView2.AutoGenerateColumns = false;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.staffIDDataGridViewTextBoxColumn1,
-            this.bedDataGridViewTextBoxColumn,
-            this.alarmTimeDataGridViewTextBoxColumn,
-            this.respondTime1DataGridViewTextBoxColumn});
-            this.dataGridView2.DataSource = this.responseTimesBindingSource;
-            this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView2.Location = new System.Drawing.Point(3, 3);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.ReadOnly = true;
-            this.dataGridView2.Size = new System.Drawing.Size(411, 197);
-            this.dataGridView2.TabIndex = 0;
-            // 
-            // btnAddStaff
-            // 
-            this.btnAddStaff.Location = new System.Drawing.Point(13, 257);
-            this.btnAddStaff.Name = "btnAddStaff";
-            this.btnAddStaff.Size = new System.Drawing.Size(75, 23);
-            this.btnAddStaff.TabIndex = 3;
-            this.btnAddStaff.Text = "Add Staff";
-            this.btnAddStaff.UseVisualStyleBackColor = true;
-            this.btnAddStaff.Click += new System.EventHandler(this.btnAddStaff_Click);
-            // 
             // staffIDDataGridViewTextBoxColumn
             // 
             this.staffIDDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
@@ -180,6 +141,36 @@
             this.monitorDB.DataSetName = "MonitorDB";
             this.monitorDB.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
+            // tabResponseTimes
+            // 
+            this.tabResponseTimes.Controls.Add(this.dataGridView2);
+            this.tabResponseTimes.Location = new System.Drawing.Point(4, 22);
+            this.tabResponseTimes.Name = "tabResponseTimes";
+            this.tabResponseTimes.Padding = new System.Windows.Forms.Padding(3);
+            this.tabResponseTimes.Size = new System.Drawing.Size(417, 203);
+            this.tabResponseTimes.TabIndex = 1;
+            this.tabResponseTimes.Text = "Response Times";
+            this.tabResponseTimes.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.AllowUserToAddRows = false;
+            this.dataGridView2.AllowUserToDeleteRows = false;
+            this.dataGridView2.AutoGenerateColumns = false;
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.staffIDDataGridViewTextBoxColumn1,
+            this.bedDataGridViewTextBoxColumn,
+            this.alarmTimeDataGridViewTextBoxColumn,
+            this.respondTime1DataGridViewTextBoxColumn});
+            this.dataGridView2.DataSource = this.responseTimesBindingSource;
+            this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView2.Location = new System.Drawing.Point(3, 3);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.ReadOnly = true;
+            this.dataGridView2.Size = new System.Drawing.Size(411, 197);
+            this.dataGridView2.TabIndex = 0;
+            // 
             // staffIDDataGridViewTextBoxColumn1
             // 
             this.staffIDDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
@@ -188,7 +179,6 @@
             this.staffIDDataGridViewTextBoxColumn1.Name = "staffIDDataGridViewTextBoxColumn1";
             this.staffIDDataGridViewTextBoxColumn1.ReadOnly = true;
             this.staffIDDataGridViewTextBoxColumn1.Visible = false;
-            this.staffIDDataGridViewTextBoxColumn1.Width = 65;
             // 
             // bedDataGridViewTextBoxColumn
             // 
@@ -222,6 +212,16 @@
             this.responseTimesBindingSource.DataMember = "ResponseTimes";
             this.responseTimesBindingSource.DataSource = this.monitorDB;
             // 
+            // btnAddStaff
+            // 
+            this.btnAddStaff.Location = new System.Drawing.Point(13, 257);
+            this.btnAddStaff.Name = "btnAddStaff";
+            this.btnAddStaff.Size = new System.Drawing.Size(75, 23);
+            this.btnAddStaff.TabIndex = 3;
+            this.btnAddStaff.Text = "Add Staff";
+            this.btnAddStaff.UseVisualStyleBackColor = true;
+            this.btnAddStaff.Click += new System.EventHandler(this.btnAddStaff_Click);
+            // 
             // shiftsTableAdapter1
             // 
             this.shiftsTableAdapter1.ClearBeforeFill = true;
@@ -234,20 +234,23 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(450, 293);
             this.Controls.Add(this.btnAddStaff);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.btnClose);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "Management";
             this.Text = "Management";
             this.Load += new System.EventHandler(this.Management_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabShifts.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.tabResponseTimes.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.shiftsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.monitorDB)).EndInit();
+            this.tabResponseTimes.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.responseTimesBindingSource)).EndInit();
             this.ResumeLayout(false);
 

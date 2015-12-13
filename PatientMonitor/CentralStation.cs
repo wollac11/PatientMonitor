@@ -12,9 +12,12 @@ namespace PatientMonitor
 {
     public partial class CentralStation : Form
     {
+       
         public CentralStation()
+
         {
             InitializeComponent();
+
         }
 
         private void timerRefresh_Tick(object sender, EventArgs e)
@@ -27,6 +30,15 @@ namespace PatientMonitor
                 if (Monitor.pastThreshold[i] == true) panel[i].BackColor = Color.Red;
                 else panel[i].BackColor = Color.Green;
             }
+
+        }
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+
         }
     }
+
+
+
 }
